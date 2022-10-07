@@ -51,6 +51,8 @@ public class BasicInput implements InputProcessor {
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+        Gdx.app.log("Mouse Position", String.format("Mouse X: %d, Mouse Y: %d", screenX, screenY));
+        context.setMousePosition(screenX, screenY);
         return false;
     }
 

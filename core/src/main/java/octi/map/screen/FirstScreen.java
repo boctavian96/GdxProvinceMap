@@ -1,8 +1,6 @@
 package octi.map.screen;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -25,10 +23,8 @@ public class FirstScreen extends AbstractScreen{
 	private Texture resourceMap;
 
 	private SpriteBatch batch;
-	private MapCreator mapCreator;
-	private Document datamodel;
 
-	private BitmapFont font = new BitmapFont();
+	private final BitmapFont font = new BitmapFont();
 	String mapTypeInfo = "Empty Map";
 
 	public FirstScreen(GdxProvinceMap context){
@@ -42,9 +38,9 @@ public class FirstScreen extends AbstractScreen{
 
 		// Prepare your screen here.
 		FileHandle fileHandle = new FileHandle("assets/map/mapId.png");
-		datamodel = XmlLoader.prepareDatamodel("assets/map/mapDatamodel.xml");
+		Document datamodel = XmlLoader.prepareDatamodel("assets/map/mapDatamodel.xml");
 
-		mapCreator = new MapCreator(fileHandle);
+		MapCreator mapCreator = new MapCreator(fileHandle);
 		MapType emptyMap = new EmptyMap();
 		MapType politicalMap = new PoliticalMap(datamodel);
 		MapType resourceMap = new ResourceMap(datamodel);
@@ -66,19 +62,19 @@ public class FirstScreen extends AbstractScreen{
 
 		batch.begin();
 		if(context.getMapState() == 0) {
-			mapTypeInfo = "Empty Map";
+			mapTypeInfo = "1 - Empty Map";
 			batch.draw(emptyMap, 0, 0);
 		}
 		if(context.getMapState() == 1){
-			mapTypeInfo = "Political Map";
+			mapTypeInfo = "2 - Political Map";
 			batch.draw(politicalMap, 0, 0);
 		}
 		if(context.getMapState() == 2){
-			mapTypeInfo = "Resource Map";
+			mapTypeInfo = "3 - Resource Map";
 			batch.draw(resourceMap, 0, 0);
 		}
 		if(context.getMapState() == 3){
-			mapTypeInfo = "Terrain Map";
+			mapTypeInfo = "4 - Terrain Map";
 			batch.draw(terrainMap, 0, 0);
 		}
 		font.draw(batch, mapTypeInfo, 0, 200);

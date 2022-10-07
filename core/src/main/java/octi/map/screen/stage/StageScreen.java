@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import octi.map.GdxProvinceMap;
+import octi.map.input.BasicInput;
 import octi.map.screen.AbstractScreen;
 import octi.map.screen.stage.actor.WorldMapActor;
 import octi.mapframework.MapCreator;
@@ -30,7 +31,10 @@ public class StageScreen extends AbstractScreen {
 
     @Override
     public void show() {
-        viewport = new FitViewport(3 * 256, 3 * 256);
+        BasicInput inputProcessor = new BasicInput(context);
+        Gdx.input.setInputProcessor(inputProcessor);
+
+        viewport = new FitViewport(640, 480);
         batch = new SpriteBatch();
         stage = new Stage(viewport, batch);
 

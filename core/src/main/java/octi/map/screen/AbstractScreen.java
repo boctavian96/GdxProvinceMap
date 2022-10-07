@@ -1,12 +1,14 @@
-package octi.map.screen.ecs;
+package octi.map.screen;
 
+import com.badlogic.gdx.Screen;
 import octi.map.GdxProvinceMap;
-import octi.map.screen.AbstractScreen;
 
-public class ECSScreen extends AbstractScreen {
+public class AbstractScreen implements Screen {
 
-    public ECSScreen(GdxProvinceMap context){
-        super(context);
+    protected final GdxProvinceMap context;
+
+    public AbstractScreen(GdxProvinceMap context){
+        this.context = context;
     }
 
     @Override

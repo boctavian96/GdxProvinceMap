@@ -1,4 +1,4 @@
-package octi.map.screen.stage;
+package octi.map.screen.stage.actor;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;

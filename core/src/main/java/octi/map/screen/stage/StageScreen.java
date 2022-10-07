@@ -1,7 +1,6 @@
 package octi.map.screen.stage;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -9,17 +8,24 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import octi.map.GdxProvinceMap;
+import octi.map.screen.AbstractScreen;
+import octi.map.screen.stage.actor.WorldMapActor;
 import octi.mapframework.MapCreator;
 import octi.maptype.MapType;
 import octi.maptype.PoliticalMap;
 import octi.xml.XmlLoader;
 import org.dom4j.Document;
 
-public class StageScreen implements Screen {
+public class StageScreen extends AbstractScreen {
 
     private Stage stage;
     private SpriteBatch batch;
     private Viewport viewport;
+
+    public StageScreen(GdxProvinceMap context){
+        super(context);
+    }
 
 
     @Override

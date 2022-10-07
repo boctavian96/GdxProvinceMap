@@ -3,19 +3,20 @@ package octi.map.screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import octi.map.GdxProvinceMap;
+import octi.map.input.BasicInput;
 import octi.mapframework.MapCreator;
 import octi.maptype.*;
 import octi.xml.XmlLoader;
 import org.dom4j.Document;
 
 /** First screen of the application. Displayed after the application is created. */
-public class FirstScreen implements Screen, InputProcessor {
+public class FirstScreen extends AbstractScreen{
 
 	//Map Types.
 	private Texture emptyMap;
@@ -30,13 +31,15 @@ public class FirstScreen implements Screen, InputProcessor {
 	private BitmapFont font = new BitmapFont();
 	String mapTypeInfo = "Empty Map";
 
-	private int gameState = 0;
-
-	public FirstScreen(){
+	public FirstScreen(GdxProvinceMap context){
+		super(context);
 	}
 
 	@Override
 	public void show() {
+		BasicInput inputProcessor = new BasicInput(context);
+		Gdx.input.setInputProcessor(inputProcessor);
+
 		// Prepare your screen here.
 		FileHandle fileHandle = new FileHandle("assets/map/mapId.png");
 		datamodel = XmlLoader.prepareDatamodel("assets/map/mapDatamodel.xml");
@@ -57,25 +60,24 @@ public class FirstScreen implements Screen, InputProcessor {
 
 	@Override
 	public void render(float delta) {
-		Gdx.input.setInputProcessor(this);
 		// Draw your screen here. "delta" is the time since last render in seconds.
 		Gdx.gl.glClearColor( 0, 0, 0, 1 );
 		Gdx.gl.glClear( GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT );
 
 		batch.begin();
-		if(gameState == 0) {
+		if(context.getMapState() == 0) {
 			mapTypeInfo = "Empty Map";
 			batch.draw(emptyMap, 0, 0);
 		}
-		if(gameState == 1){
+		if(context.getMapState() == 1){
 			mapTypeInfo = "Political Map";
 			batch.draw(politicalMap, 0, 0);
 		}
-		if(gameState == 2){
+		if(context.getMapState() == 2){
 			mapTypeInfo = "Resource Map";
 			batch.draw(resourceMap, 0, 0);
 		}
-		if(gameState == 3){
+		if(context.getMapState() == 3){
 			mapTypeInfo = "Terrain Map";
 			batch.draw(terrainMap, 0, 0);
 		}
@@ -106,60 +108,5 @@ public class FirstScreen implements Screen, InputProcessor {
 	@Override
 	public void dispose() {
 		// Destroy screen's assets here.
-	}
-
-	@Override
-	public boolean keyDown(int keycode) {
-		return false;
-	}
-
-	@Override
-	public boolean keyUp(int keycode) {
-		if(keycode == Input.Keys.W){
-			gameState++;
-			if(gameState > 3){
-				gameState = 3;
-			}
-			return true;
-		}
-		if(keycode == Input.Keys.S){
-			gameState--;
-			if(gameState < 0){
-				gameState = 0;
-			}
-			return true;
-		}
-		return false;
-	}
-
-	@Override
-	public boolean keyTyped(char character) {
-		return false;
-	}
-
-	@Override
-	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		return false;
-	}
-
-	@Override
-	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		Gdx.app.log("MOUSE_POSITION", String.format("Mouse X: %d, Mouse Y: %d", screenX, screenY));
-		return false;
-	}
-
-	@Override
-	public boolean touchDragged(int screenX, int screenY, int pointer) {
-		return false;
-	}
-
-	@Override
-	public boolean mouseMoved(int screenX, int screenY) {
-		return false;
-	}
-
-	@Override
-	public boolean scrolled(float amountX, float amountY) {
-		return false;
 	}
 }

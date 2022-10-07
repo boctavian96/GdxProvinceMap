@@ -1,0 +1,20 @@
+<map>
+    <province id="0">
+        <name>Idk</name>
+        <terrainType>Mountains</terrainType>
+        <wealth>3000</wealth>
+        <ownerId>1,0,0</ownerId>
+    </province>
+    <province id="1">
+        <name>Felwinter</name>
+        <terrainType>Plains</terrainType>
+        <wealth>2000</wealth>
+        <ownerId>0,1,0</ownerId>
+    </province>
+    <province id="2">
+        <name>Winterfel</name>
+        <terrainType>Plains</terrainType>
+        <wealth>1000</wealth>
+        <ownerId>0,0,1</ownerId>
+    </province>
+</map>

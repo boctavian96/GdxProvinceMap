@@ -9,8 +9,8 @@ import org.dom4j.Document;
 
 public class MapCreator {
 
-    private ProvincePixmap pixmap;
-    private ProvinceMap provinceMap;
+    private final ProvincePixmap pixmap;
+    private final ProvinceMap provinceMap;
 
     public MapCreator(FileHandle fh){
         this.pixmap = new ProvincePixmap(fh);
@@ -26,9 +26,5 @@ public class MapCreator {
         ProvinceMap pm = mapType.generateMap(provinceMap.getProvinces());
         pixmap.updateProvinces(pm);
         return new Texture(pixmap);
-    }
-
-    public ProvinceMap getProvinceMap(){
-        return this.provinceMap;
     }
 }

@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ResourceMap implements MapType{
 
-    private Document datamodel;
+    private final Document datamodel;
 
     public ResourceMap(Document doc){
         this.datamodel = doc;

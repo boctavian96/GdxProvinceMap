@@ -17,7 +17,7 @@ public class ProvincePixmap extends Pixmap {
 
     private final Set<Color> provinceIds;
     private final List<Province> provinces;
-    private ProvinceMap provinceMap;
+    private final ProvinceMap provinceMap;
 
     public ProvincePixmap(FileHandle file) {
         super(file);
@@ -75,9 +75,9 @@ public class ProvincePixmap extends Pixmap {
     }
 
     public void recolorProvince(Color newColor, List<Point> points){
-        points.forEach(point -> {
-            drawPixel(point.getX(), point.getY(), Color.rgba8888(newColor));
-        });
+        points.forEach(point ->
+            drawPixel(point.getX(), point.getY(), Color.rgba8888(newColor))
+        );
     }
 
     public void recolorProvince(Color newColor, Province province){

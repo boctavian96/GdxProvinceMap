@@ -4,16 +4,13 @@ import com.badlogic.gdx.graphics.Color;
 import octi.model.Province;
 import octi.model.ProvinceMap;
 import org.dom4j.Document;
-import org.dom4j.DocumentException;
 import org.dom4j.Node;
-import org.dom4j.io.SAXReader;
 
-import java.net.URL;
 import java.util.List;
 
 public class PoliticalMap implements MapType{
 
-    private Document datamodel;
+    private final Document datamodel;
 
     public PoliticalMap(Document doc) {
         this.datamodel = doc;

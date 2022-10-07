@@ -6,5 +6,5 @@ import octi.model.ProvinceMap;
 import java.util.List;
 
 public interface MapType {
-    public ProvinceMap generateMap(List<? extends Province> provinceMap);
+    ProvinceMap generateMap(List<? extends Province> provinceMap);
 }

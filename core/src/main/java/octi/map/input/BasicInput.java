@@ -3,13 +3,18 @@ package octi.map.input;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.math.Vector3;
 import octi.map.GdxProvinceMap;
 
 public class BasicInput implements InputProcessor {
     private final GdxProvinceMap context;
+    private final OrthographicCamera camera;
 
-    public BasicInput(GdxProvinceMap context){
+    public BasicInput(GdxProvinceMap context, OrthographicCamera camera){
         this.context = context;
+        this.camera = camera;
     }
 
     @Override
@@ -51,7 +56,11 @@ public class BasicInput implements InputProcessor {
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        Gdx.app.log("Mouse Position", String.format("Mouse X: %d, Mouse Y: %d", screenX, screenY));
+        Gdx.app.log("Mouse Projected", String.format("Mouse X: %d, Mouse Y: %d", screenX, screenY));
+        Vector3 screenCoordinates = new Vector3(screenX, screenY, 0f);
+        Vector3 unprojectedCoordinates = camera.unproject(screenCoordinates);
+
+        Gdx.app.log("Mouse Unprojected", String.format("Mouse UX: %f, Mouse UY: %f", unprojectedCoordinates.x, unprojectedCoordinates.y));
         context.setMousePosition(screenX, screenY);
         return false;
     }

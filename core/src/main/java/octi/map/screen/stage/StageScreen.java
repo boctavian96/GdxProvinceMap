@@ -31,7 +31,7 @@ public class StageScreen extends AbstractScreen {
 
     @Override
     public void show() {
-        BasicInput inputProcessor = new BasicInput(context);
+        BasicInput inputProcessor = new BasicInput(context, camera);
         Gdx.input.setInputProcessor(inputProcessor);
 
         viewport = new FitViewport(640, 480);
@@ -51,6 +51,7 @@ public class StageScreen extends AbstractScreen {
 
     @Override
     public void render(float delta) {
+        camera.update();
         Gdx.gl.glClearColor( 0, 0, 0, 1 );
         Gdx.gl.glClear( GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT );
 

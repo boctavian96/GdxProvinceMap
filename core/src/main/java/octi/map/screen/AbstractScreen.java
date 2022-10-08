@@ -12,6 +12,7 @@ public class AbstractScreen implements Screen {
     public AbstractScreen(GdxProvinceMap context){
         this.context = context;
         this.camera = new OrthographicCamera(context.getResolution().x, context.getResolution().y);
+        this.camera.position.set(context.getResolution().x/2, context.getResolution().y/2, 0);
     }
 
     @Override

@@ -33,7 +33,7 @@ public class FirstScreen extends AbstractScreen{
 
 	@Override
 	public void show() {
-		BasicInput inputProcessor = new BasicInput(context);
+		BasicInput inputProcessor = new BasicInput(context, camera);
 		Gdx.input.setInputProcessor(inputProcessor);
 
 		// Prepare your screen here.

@@ -1,14 +1,17 @@
 package octi.map.screen;
 
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import octi.map.GdxProvinceMap;
 
 public class AbstractScreen implements Screen {
 
     protected final GdxProvinceMap context;
+    protected final OrthographicCamera camera;
 
     public AbstractScreen(GdxProvinceMap context){
         this.context = context;
+        this.camera = new OrthographicCamera(context.getResolution().x, context.getResolution().y);
     }
 
     @Override

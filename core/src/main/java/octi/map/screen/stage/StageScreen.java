@@ -36,7 +36,7 @@ public class StageScreen extends AbstractScreen {
 
         viewport = new FitViewport(640, 480);
         batch = new SpriteBatch();
-        stage = new Stage(viewport, batch);
+        stage = new Stage();
 
         FileHandle fh = new FileHandle("assets/map/mapId.png");
         Document datamodel = XmlLoader.prepareDatamodel("assets/map/mapDatamodel.xml");

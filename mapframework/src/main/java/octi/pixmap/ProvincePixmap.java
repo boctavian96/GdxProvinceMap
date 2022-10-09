@@ -3,6 +3,7 @@ package octi.pixmap;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.math.Vector3;
 import octi.model.Point;
 import octi.model.Province;
 import octi.model.ProvinceMap;
@@ -101,6 +102,15 @@ public class ProvincePixmap extends Pixmap {
         for (Province province: provinces){
             recolorProvince(province.getProvinceColor(), province);
         }
+    }
+
+    /**
+     * Transform mouse coordinates to texture coordinates.
+     * @param mousePosition
+     */
+    public void transform(Vector3 mousePosition){
+        //TODO: Implement me.
+        //TODO: Check if this method is fiable.
     }
 
     public ProvinceMap getProvinceMap(){

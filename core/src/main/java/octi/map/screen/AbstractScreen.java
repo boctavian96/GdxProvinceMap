@@ -27,7 +27,7 @@ public class AbstractScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
-
+        camera.position.set(width/2, height/2, 0);
     }
 
     @Override

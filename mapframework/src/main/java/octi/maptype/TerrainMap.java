@@ -9,7 +9,7 @@ import org.dom4j.Node;
 import java.util.List;
 
 public class TerrainMap implements MapType{
-    private Document datamodel;
+    private final Document datamodel;
 
     public TerrainMap(Document doc){
         this.datamodel = doc;

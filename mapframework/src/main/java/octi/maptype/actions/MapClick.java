@@ -1,6 +1,5 @@
 package octi.maptype.actions;
 
-import com.badlogic.gdx.graphics.Color;
 import octi.model.Point;
 import octi.model.Province;
 import octi.model.ProvinceMap;

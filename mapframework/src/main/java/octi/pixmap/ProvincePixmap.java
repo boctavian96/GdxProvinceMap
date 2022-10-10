@@ -113,6 +113,10 @@ public class ProvincePixmap extends Pixmap {
         //TODO: Check if this method is fiable.
     }
 
+    public void applyMask(){
+        //TODO: Implement me.
+    }
+
     public ProvinceMap getProvinceMap(){
         return this.provinceMap;
     }

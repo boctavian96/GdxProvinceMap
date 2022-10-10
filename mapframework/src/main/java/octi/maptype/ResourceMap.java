@@ -22,8 +22,8 @@ public class ResourceMap implements MapType{
         int maximumWealth = getMaximum(list);
 
         for(Node n : list){
-            int id = Integer.valueOf(n.valueOf("@id"));
-            int wealth = Integer.valueOf(n.valueOf("wealth"));
+            int id = Integer.parseInt(n.valueOf("@id"));
+            int wealth = Integer.parseInt(n.valueOf("wealth"));
 
             provinceMap.get(id).setProvinceColor(colorProvince(wealth, maximumWealth));
         }

@@ -12,6 +12,7 @@ gradle-app.setting
 /headless/build/
 /server/build/
 /shared/build/
+/mapframework/build/
 
 ## Java:
 *.class
@@ -72,6 +73,7 @@ www-test/
 /headless/bin/
 /server/bin/
 /shared/bin/
+/mapframework/bin/
 *.tmp
 *.bak
 *.swp
@@ -95,6 +97,7 @@ www-test/
 /headless/nbproject/private/
 /server/nbproject/private/
 /shared/nbproject/private/
+/mapframework/nbproject/private/
 
 /nbbuild/
 /android/nbbuild/
@@ -107,6 +110,7 @@ www-test/
 /headless/nbbuild/
 /server/nbbuild/
 /shared/nbbuild/
+/mapframework/nbbuild/
 
 /dist/
 /android/dist/
@@ -119,6 +123,7 @@ www-test/
 /headless/dist/
 /server/dist/
 /shared/dist/
+/mapframework/dist/
 
 /nbdist/
 /android/nbdist/
@@ -131,6 +136,7 @@ www-test/
 /headless/nbdist/
 /server/nbdist/
 /shared/nbdist/
+/mapframework/nbdist/
 
 nbactions.xml
 nb-configuration.xml

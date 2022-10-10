@@ -1,11 +1,8 @@
 package octi.map;
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.graphics.Camera;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
-import octi.map.screen.FirstScreen;
 import octi.map.screen.stage.StageScreen;
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */

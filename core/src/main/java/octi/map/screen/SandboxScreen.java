@@ -14,7 +14,7 @@ import octi.xml.XmlLoader;
 import org.dom4j.Document;
 
 /** First screen of the application. Displayed after the application is created. */
-public class FirstScreen extends AbstractScreen{
+public class SandboxScreen extends AbstractScreen{
 
 	//Map Types.
 	private Texture emptyMap;
@@ -27,7 +27,7 @@ public class FirstScreen extends AbstractScreen{
 	private final BitmapFont font = new BitmapFont();
 	String mapTypeInfo = "Empty Map";
 
-	public FirstScreen(GdxProvinceMap context){
+	public SandboxScreen(GdxProvinceMap context){
 		super(context);
 	}
 

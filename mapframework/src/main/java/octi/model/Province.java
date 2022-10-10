@@ -1,24 +1,21 @@
 package octi.model;
 
 import com.badlogic.gdx.graphics.Color;
+import lombok.AllArgsConstructor;
 
 import java.util.List;
 
+@AllArgsConstructor
 public class Province {
+    private static final Color emptyColor = Color.GRAY;
+
     private int id;
     private Color provinceColorId;
     private Color provinceColor;
     private List<Point> pointList;
 
-    public Province(int id, Color provinceColorId, Color provinceColor, List<Point> pointList) {
-        this.id = id;
-        this.provinceColorId = provinceColorId;
-        this.provinceColor = provinceColor;
-        this.pointList = pointList;
-    }
-
     public Province(int id, Color provinceColorId, List<Point> pointList){
-        this(id, provinceColorId, Color.GRAY, pointList);
+        this(id, provinceColorId, emptyColor, pointList);
     }
 
     public Color getProvinceColorId() {

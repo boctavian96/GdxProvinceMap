@@ -3,6 +3,7 @@ package octi.maptype;
 import com.badlogic.gdx.graphics.Color;
 import octi.model.Province;
 import octi.model.ProvinceMap;
+import octi.util.ColorUtils;
 import org.dom4j.Document;
 import org.dom4j.Node;
 
@@ -25,10 +26,7 @@ public class PoliticalMap implements MapType{
             String owner = n.valueOf("ownerId");
             String[] playerColorId = owner.split(",");
 
-            float r = Float.parseFloat(playerColorId[0]);
-            float g = Float.parseFloat(playerColorId[1]);
-            float b = Float.parseFloat(playerColorId[2]);
-            Color playerColor = new Color(r, g, b, 1);
+            Color playerColor = ColorUtils.parseColor(playerColorId);
 
             provinces.get(Integer.parseInt(id)).setProvinceColor(playerColor);
         }

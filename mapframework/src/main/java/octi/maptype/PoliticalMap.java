@@ -1,6 +1,8 @@
 package octi.maptype;
 
 import com.badlogic.gdx.graphics.Color;
+import octi.maptype.actions.MapClick;
+import octi.model.Point;
 import octi.model.Province;
 import octi.model.ProvinceMap;
 import octi.util.ColorUtils;
@@ -9,7 +11,7 @@ import org.dom4j.Node;
 
 import java.util.List;
 
-public class PoliticalMap implements MapType{
+public class PoliticalMap implements MapType, MapClick{
 
     private final Document datamodel;
 
@@ -32,6 +34,18 @@ public class PoliticalMap implements MapType{
         }
 
 
+        return new ProvinceMap(provinces);
+    }
+
+    @Override
+    public ProvinceMap clickColor(List<? extends Province> provinces, Point clickPoint) {
+        for (Province province : provinces){
+            if(province.getPointList().contains(clickPoint)){
+                Color originalColor = province.getProvinceColor();
+                Color clickColor = originalColor.add(0.01f, 0.01f, 0.01f, 0f);
+                province.setProvinceColor(clickColor);
+            }
+        }
         return new ProvinceMap(provinces);
     }
 }

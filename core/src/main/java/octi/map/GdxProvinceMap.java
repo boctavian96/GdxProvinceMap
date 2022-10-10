@@ -1,6 +1,7 @@
 package octi.map;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import octi.map.screen.stage.StageScreen;
@@ -8,7 +9,7 @@ import octi.map.screen.stage.StageScreen;
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class GdxProvinceMap extends Game {
 	private int mapState = 0;
-	private Vector3 mousePosition = new Vector3();
+	private Vector3 mousePosition = Vector3.Zero;
 	private Vector2 resolution = new Vector2(640, 480);
 
 	@Override
@@ -20,8 +21,12 @@ public class GdxProvinceMap extends Game {
 		this.mapState = newState;
 	}
 
-	public void setMousePosition(int x, int y){
+	public void setMousePosition(float x, float y){
 		this.mousePosition.set(x, y, 0);
+	}
+
+	public void setMousePosition(Vector3 position){
+		this.mousePosition = position;
 	}
 
 	public int getMapState(){

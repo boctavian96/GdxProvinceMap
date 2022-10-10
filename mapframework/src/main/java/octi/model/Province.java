@@ -2,10 +2,12 @@ package octi.model;
 
 import com.badlogic.gdx.graphics.Color;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
 @AllArgsConstructor
+@EqualsAndHashCode
 public class Province {
     private static final Color emptyColor = Color.GRAY;
 

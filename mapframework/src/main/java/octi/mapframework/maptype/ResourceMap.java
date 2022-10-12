@@ -17,7 +17,7 @@ public class ResourceMap implements MapType{
     }
 
     @Override
-    public ProvinceMap generateMap(List<? extends Province> provinceMap) {
+    public ProvinceMap generateMap(List<Province> provinceMap) {
         List<Node> list = datamodel.selectNodes("//map//province");
         int maximumWealth = getMaximum(list);
 

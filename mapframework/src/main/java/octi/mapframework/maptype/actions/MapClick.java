@@ -7,5 +7,5 @@ import octi.mapframework.model.ProvinceMap;
 import java.util.List;
 
 public interface MapClick {
-    ProvinceMap clickColor(List<? extends Province> provinces, Point clickPoint);
+    ProvinceMap clickColor(List<Province> provinces, Point clickPoint);
 }

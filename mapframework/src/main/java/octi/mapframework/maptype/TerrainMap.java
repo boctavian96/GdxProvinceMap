@@ -15,7 +15,7 @@ public class TerrainMap implements MapType{
         this.datamodel = doc;
     }
     @Override
-    public ProvinceMap generateMap(List<? extends Province> provinceMap) {
+    public ProvinceMap generateMap(List<Province> provinceMap) {
         List<Node> list = datamodel.selectNodes("//map//province");
 
         for(Node n : list){

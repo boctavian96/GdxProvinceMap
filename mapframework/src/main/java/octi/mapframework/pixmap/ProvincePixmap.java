@@ -7,7 +7,7 @@ import com.badlogic.gdx.math.Vector3;
 import octi.mapframework.model.Point;
 import octi.mapframework.model.Province;
 import octi.mapframework.model.ProvinceMap;
-import octi.mapframework.util.Version;
+import octi.mapframework.meta.Version;
 import org.dom4j.Document;
 
 import java.util.ArrayList;

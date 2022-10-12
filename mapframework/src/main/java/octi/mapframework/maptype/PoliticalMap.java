@@ -20,7 +20,7 @@ public class PoliticalMap implements MapType, MapClick {
     }
 
     @Override
-    public ProvinceMap generateMap(List<? extends Province> provinces) {
+    public ProvinceMap generateMap(List<Province> provinces) {
         List<Node> list = datamodel.selectNodes("//map//province");
 
         for(Node n : list){
@@ -38,7 +38,7 @@ public class PoliticalMap implements MapType, MapClick {
     }
 
     @Override
-    public ProvinceMap clickColor(List<? extends Province> provinces, Point clickPoint) {
+    public ProvinceMap clickColor(List<Province> provinces, Point clickPoint) {
         for (Province province : provinces){
             if(province.getPointList().contains(clickPoint)){
                 Color originalColor = province.getProvinceColor();

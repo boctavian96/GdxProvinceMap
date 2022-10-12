@@ -1,27 +1,24 @@
 package octi.mapframework.model;
 
 
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 import org.dom4j.Document;
 
 import java.util.List;
 
+@AllArgsConstructor
 @EqualsAndHashCode
 public class ProvinceMap {
-    private final List<? extends Province> provinces;
+    @Getter @Setter
+    private List<Province> provinces;
+    @Getter @Setter
     private Document datamodel;
 
-    public ProvinceMap(List<? extends Province> provinces){
-        this.provinces = provinces;
-    }
-    public List<? extends Province> getProvinces() {
-        return provinces;
-    }
-    public void setDatamodel(Document datamodel){
-        this.datamodel = datamodel;
-    }
-    public Document getDatamodel(){
-        return this.datamodel;
+    public ProvinceMap(List<Province> provinceList){
+        this.provinces = provinceList;
     }
 
     public boolean containsPoint(Point p){

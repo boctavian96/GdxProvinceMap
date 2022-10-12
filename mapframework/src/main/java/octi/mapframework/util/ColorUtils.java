@@ -1,7 +1,10 @@
 package octi.mapframework.util;
 
 import com.badlogic.gdx.graphics.Color;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ColorUtils {
     public static Color parseColor(String[] colorCoordinates){
         float r = Float.parseFloat(colorCoordinates[0]);

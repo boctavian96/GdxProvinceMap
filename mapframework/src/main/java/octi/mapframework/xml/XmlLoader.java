@@ -1,4 +1,4 @@
-package octi.xml;
+package octi.mapframework.xml;
 
 import lombok.NonNull;
 import org.dom4j.Document;

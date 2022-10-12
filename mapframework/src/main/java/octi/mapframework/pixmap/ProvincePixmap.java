@@ -1,13 +1,13 @@
-package octi.pixmap;
+package octi.mapframework.pixmap;
 
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.math.Vector3;
-import octi.model.Point;
-import octi.model.Province;
-import octi.model.ProvinceMap;
-import octi.util.Version;
+import octi.mapframework.model.Point;
+import octi.mapframework.model.Province;
+import octi.mapframework.model.ProvinceMap;
+import octi.mapframework.util.Version;
 import org.dom4j.Document;
 
 import java.util.ArrayList;

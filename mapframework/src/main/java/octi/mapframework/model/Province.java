@@ -1,4 +1,4 @@
-package octi.model;
+package octi.mapframework.model;
 
 import com.badlogic.gdx.graphics.Color;
 import lombok.AllArgsConstructor;

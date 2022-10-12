@@ -1,17 +1,17 @@
-package octi.maptype;
+package octi.mapframework.maptype;
 
 import com.badlogic.gdx.graphics.Color;
-import octi.maptype.actions.MapClick;
-import octi.model.Point;
-import octi.model.Province;
-import octi.model.ProvinceMap;
-import octi.util.ColorUtils;
+import octi.mapframework.maptype.actions.MapClick;
+import octi.mapframework.model.Point;
+import octi.mapframework.model.Province;
+import octi.mapframework.model.ProvinceMap;
+import octi.mapframework.util.ColorUtils;
 import org.dom4j.Document;
 import org.dom4j.Node;
 
 import java.util.List;
 
-public class PoliticalMap implements MapType, MapClick{
+public class PoliticalMap implements MapType, MapClick {
 
     private final Document datamodel;
 

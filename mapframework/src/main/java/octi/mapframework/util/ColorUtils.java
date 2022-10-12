@@ -1,4 +1,4 @@
-package octi.util;
+package octi.mapframework.util;
 
 import com.badlogic.gdx.graphics.Color;
 

@@ -2,11 +2,11 @@ package octi.mapframework;
 
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
-import octi.maptype.MapType;
-import octi.maptype.actions.MapClick;
-import octi.model.Point;
-import octi.model.ProvinceMap;
-import octi.pixmap.ProvincePixmap;
+import octi.mapframework.maptype.MapType;
+import octi.mapframework.maptype.actions.MapClick;
+import octi.mapframework.model.Point;
+import octi.mapframework.model.ProvinceMap;
+import octi.mapframework.pixmap.ProvincePixmap;
 import org.dom4j.Document;
 
 public class MapCreator {

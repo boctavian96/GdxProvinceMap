@@ -1,8 +1,8 @@
-package octi.maptype;
+package octi.mapframework.maptype;
 
 import com.badlogic.gdx.graphics.Color;
-import octi.model.Province;
-import octi.model.ProvinceMap;
+import octi.mapframework.model.Province;
+import octi.mapframework.model.ProvinceMap;
 import org.dom4j.Document;
 import org.dom4j.Node;
 

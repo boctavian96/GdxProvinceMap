@@ -11,11 +11,11 @@ import octi.map.input.BasicInput;
 import octi.map.screen.AbstractScreen;
 import octi.map.screen.stage.actor.WorldMapActor;
 import octi.mapframework.MapCreator;
-import octi.maptype.MapType;
-import octi.maptype.PoliticalMap;
-import octi.maptype.actions.MapClick;
-import octi.model.Point;
-import octi.xml.XmlLoader;
+import octi.mapframework.maptype.MapType;
+import octi.mapframework.maptype.PoliticalMap;
+import octi.mapframework.maptype.actions.MapClick;
+import octi.mapframework.model.Point;
+import octi.mapframework.xml.XmlLoader;
 import org.dom4j.Document;
 
 public class StageScreen extends AbstractScreen {

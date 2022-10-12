@@ -9,8 +9,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import octi.map.GdxProvinceMap;
 import octi.map.input.BasicInput;
 import octi.mapframework.MapCreator;
-import octi.maptype.*;
-import octi.xml.XmlLoader;
+import octi.mapframework.maptype.*;
+import octi.mapframework.xml.XmlLoader;
 import org.dom4j.Document;
 
 /** First screen of the application. Displayed after the application is created. */

@@ -1,4 +1,4 @@
-package octi.model;
+package octi.mapframework.model;
 
 
 import lombok.EqualsAndHashCode;

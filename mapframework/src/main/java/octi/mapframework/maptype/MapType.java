@@ -1,7 +1,7 @@
-package octi.maptype;
+package octi.mapframework.maptype;
 
-import octi.model.Province;
-import octi.model.ProvinceMap;
+import octi.mapframework.model.Province;
+import octi.mapframework.model.ProvinceMap;
 
 import java.util.List;
 

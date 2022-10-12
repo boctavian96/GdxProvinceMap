@@ -27,7 +27,7 @@ public class MapCreator {
     }
 
     public Texture generateMap(MapType mapType){
-        ProvinceMap pm = mapType.generateMap(provinceMap.getProvinces());
+        ProvinceMap pm = mapType.generateMap(provinceMap);
         pixmap.updateProvinces(pm);
         return new Texture(pixmap);
     }

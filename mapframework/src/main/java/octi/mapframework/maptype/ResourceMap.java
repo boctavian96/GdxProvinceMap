@@ -3,32 +3,26 @@ package octi.mapframework.maptype;
 import com.badlogic.gdx.graphics.Color;
 import octi.mapframework.model.Province;
 import octi.mapframework.model.ProvinceMap;
-import org.dom4j.Document;
 import org.dom4j.Node;
 
 import java.util.List;
 
 public class ResourceMap implements MapType{
 
-    private final Document datamodel;
-
-    public ResourceMap(Document doc){
-        this.datamodel = doc;
-    }
-
     @Override
-    public ProvinceMap generateMap(List<Province> provinceMap) {
-        List<Node> list = datamodel.selectNodes("//map//province");
+    public ProvinceMap generateMap(ProvinceMap provinceMap) {
+        List<Node> list = provinceMap.getDatamodel().selectNodes("//map//province");
+        List<Province> provinces = provinceMap.getProvinces();
         int maximumWealth = getMaximum(list);
 
         for(Node n : list){
             int id = Integer.parseInt(n.valueOf("@id"));
             int wealth = Integer.parseInt(n.valueOf("wealth"));
 
-            provinceMap.get(id).setProvinceColor(colorProvince(wealth, maximumWealth));
+            provinces.get(id).setProvinceColor(colorProvince(wealth, maximumWealth));
         }
 
-        return new ProvinceMap(provinceMap);
+        return new ProvinceMap(provinces);
 
     }
 

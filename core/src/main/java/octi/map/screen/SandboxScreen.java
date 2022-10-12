@@ -42,9 +42,9 @@ public class SandboxScreen extends AbstractScreen{
 
 		MapCreator mapCreator = new MapCreator(fileHandle);
 		MapType emptyMap = new EmptyMap();
-		MapType politicalMap = new PoliticalMap(datamodel);
-		MapType resourceMap = new ResourceMap(datamodel);
-		MapType terrainMap = new TerrainMap(datamodel);
+		MapType politicalMap = new PoliticalMap();
+		MapType resourceMap = new ResourceMap();
+		MapType terrainMap = new TerrainMap();
 
 
 		this.emptyMap = mapCreator.generateMap(emptyMap);

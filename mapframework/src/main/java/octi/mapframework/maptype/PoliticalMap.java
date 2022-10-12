@@ -13,15 +13,10 @@ import java.util.List;
 
 public class PoliticalMap implements MapType, MapClick {
 
-    private final Document datamodel;
-
-    public PoliticalMap(Document doc) {
-        this.datamodel = doc;
-    }
-
     @Override
-    public ProvinceMap generateMap(List<Province> provinces) {
-        List<Node> list = datamodel.selectNodes("//map//province");
+    public ProvinceMap generateMap(ProvinceMap provinceMap) {
+        List<Node> list = provinceMap.getDatamodel().selectNodes("//map//province");
+        List<Province> provinces = provinceMap.getProvinces();
 
         for(Node n : list){
             String id = n.valueOf("@id");

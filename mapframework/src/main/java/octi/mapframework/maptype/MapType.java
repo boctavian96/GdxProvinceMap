@@ -1,10 +1,10 @@
 package octi.mapframework.maptype;
 
-import octi.mapframework.model.Province;
+import octi.mapframework.meta.Experimental;
 import octi.mapframework.model.ProvinceMap;
 
-import java.util.List;
 
+@Experimental
 public interface MapType {
-    ProvinceMap generateMap(List<Province> provinceMap);
+    ProvinceMap generateMap(ProvinceMap provinceMap);
 }

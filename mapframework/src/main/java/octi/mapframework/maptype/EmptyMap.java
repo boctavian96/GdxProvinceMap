@@ -7,7 +7,7 @@ import java.util.List;
 
 public class EmptyMap implements MapType{
     @Override
-    public ProvinceMap generateMap(List<Province> provinceMap) {
-        return new ProvinceMap(provinceMap);
+    public ProvinceMap generateMap(ProvinceMap provinceMap) {
+        return provinceMap;
     }
 }

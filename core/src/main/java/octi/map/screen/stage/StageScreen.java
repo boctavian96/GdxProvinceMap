@@ -23,7 +23,6 @@ import org.dom4j.Document;
 public class StageScreen extends AbstractScreen {
 
     private Stage stage;
-    private Document datamodel;
     private MapCreator mc;
     private SpriteBatch spriteBatch;
     private ProvinceBitmap provinceBitmap;
@@ -41,10 +40,10 @@ public class StageScreen extends AbstractScreen {
         Gdx.input.setInputProcessor(inputProcessor);
 
         FileHandle fh = new FileHandle("assets/map/mapId.png");
-        datamodel = XmlLoader.prepareDatamodel("assets/map/mapDatamodel.xml");
+        Document datamodel = XmlLoader.prepareDatamodel("assets/map/mapDatamodel.xml");
 
         mc = new MapCreator(fh, datamodel);
-        MapType type = new PoliticalMap(datamodel);
+        MapType type = new PoliticalMap();
         Texture t = mc.generateMap(type);
         WorldMapActor wma = new WorldMapActor(t);
 
@@ -61,7 +60,7 @@ public class StageScreen extends AbstractScreen {
 
         if(context.getLmbDown()){
             Point clickPoint = new Point(context.getMousePosition().x, context.getMousePosition().y);
-            MapClick mapClick = new PoliticalMap(datamodel);
+            MapClick mapClick = new PoliticalMap();
             Texture t = mc.generateMapClick(mapClick, clickPoint);
             WorldMapActor clickWma = new WorldMapActor(t);
             stage.addActor(clickWma);

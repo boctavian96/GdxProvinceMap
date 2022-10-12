@@ -4,10 +4,10 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.math.Vector3;
+import jdk.jfr.Experimental;
 import octi.mapframework.model.Point;
 import octi.mapframework.model.Province;
 import octi.mapframework.model.ProvinceMap;
-import octi.mapframework.meta.Version;
 import org.dom4j.Document;
 
 import java.util.ArrayList;
@@ -21,7 +21,6 @@ public class ProvincePixmap extends Pixmap {
     private final List<Province> provinces;
     private final ProvinceMap provinceMap;
 
-    @Version(version = "0.2.22")
     public ProvincePixmap(FileHandle file) {
         super(file);
 
@@ -35,8 +34,7 @@ public class ProvincePixmap extends Pixmap {
         super(file);
         this.provinceIds = generateProvinceIds();
         this.provinces = generateProvinces();
-        this.provinceMap = new ProvinceMap(provinces);
-        this.provinceMap.setDatamodel(datamodel);
+        this.provinceMap = new ProvinceMap(provinces, datamodel);
     }
 
     private Set<Color> generateProvinceIds(){

@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import octi.map.GdxProvinceMap;
@@ -15,6 +16,7 @@ import octi.mapframework.maptype.MapType;
 import octi.mapframework.maptype.PoliticalMap;
 import octi.mapframework.maptype.actions.MapClick;
 import octi.mapframework.model.Point;
+import octi.mapframework.naming.ProvinceBitmap;
 import octi.mapframework.xml.XmlLoader;
 import org.dom4j.Document;
 
@@ -23,6 +25,8 @@ public class StageScreen extends AbstractScreen {
     private Stage stage;
     private Document datamodel;
     private MapCreator mc;
+    private SpriteBatch spriteBatch;
+    private ProvinceBitmap provinceBitmap;
 
     public StageScreen(GdxProvinceMap context){
         super(context);
@@ -31,6 +35,7 @@ public class StageScreen extends AbstractScreen {
 
     @Override
     public void show() {
+        spriteBatch = new SpriteBatch();
         BasicInput inputProcessor = new BasicInput(context, camera);
         stage = new Stage();
         Gdx.input.setInputProcessor(inputProcessor);
@@ -42,6 +47,8 @@ public class StageScreen extends AbstractScreen {
         MapType type = new PoliticalMap(datamodel);
         Texture t = mc.generateMap(type);
         WorldMapActor wma = new WorldMapActor(t);
+
+        provinceBitmap = new ProvinceBitmap();
 
         stage.addActor(wma);
     }
@@ -63,6 +70,12 @@ public class StageScreen extends AbstractScreen {
 
         stage.draw();
         stage.act(delta);
+
+        spriteBatch.begin();
+        provinceBitmap.drawProvinceName(spriteBatch, "West", new Point(15, 87));
+        provinceBitmap.drawProvinceName(spriteBatch, "Center", new Point(40, 99));
+        provinceBitmap.drawProvinceName(spriteBatch, "East", new Point(66, 83));
+        spriteBatch.end();
     }
 
     @Override

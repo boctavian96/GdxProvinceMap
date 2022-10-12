@@ -52,7 +52,7 @@ public class BasicInput implements InputProcessor {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        if(button == 0){
+        if(Input.Buttons.LEFT == button){
             context.setLmbDown(true);
         }
         return false;
@@ -60,7 +60,7 @@ public class BasicInput implements InputProcessor {
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        if(button == 0 && context.getLmbDown()) {
+        if(Input.Buttons.LEFT == button && context.getLmbDown()) {
             Gdx.app.log("Mouse Projected", format("Mouse X: %d, Mouse Y: %d", screenX, screenY));
             Vector3 screenCoordinates = new Vector3(screenX, screenY, 0f);
             Vector3 unprojectedCoordinates = camera.unproject(screenCoordinates);

@@ -21,7 +21,7 @@ public class ProvincePixmap extends Pixmap {
     private final List<Province> provinces;
     private final ProvinceMap provinceMap;
 
-    @Version(version = "0.1.1")
+    @Version(version = "0.2.22")
     public ProvincePixmap(FileHandle file) {
         super(file);
 
@@ -110,9 +110,8 @@ public class ProvincePixmap extends Pixmap {
      * Transform mouse coordinates to texture coordinates.
      * @param mousePosition
      */
-    public void transform(Vector3 mousePosition){
-        //TODO: Implement me.
-        //TODO: Check if this method is fiable.
+    public Vector3 transform(Vector3 mousePosition){
+        return new Vector3(mousePosition.x, getHeight() - mousePosition.y, 0);
     }
 
     public void applyMask(){

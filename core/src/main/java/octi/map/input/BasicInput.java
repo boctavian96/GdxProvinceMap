@@ -61,12 +61,18 @@ public class BasicInput implements InputProcessor {
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
         if(Input.Buttons.LEFT == button && context.getLmbDown()) {
-            Gdx.app.log("Mouse Projected", format("Mouse X: %d, Mouse Y: %d", screenX, screenY));
             Vector3 screenCoordinates = new Vector3(screenX, screenY, 0f);
-            Vector3 unprojectedCoordinates = camera.unproject(screenCoordinates);
+            Gdx.app.log("Mouse Projected", format("Mouse X: %d, Mouse Y: %d", screenX, screenY));
 
+            Vector3 unprojectedCoordinates = camera.unproject(screenCoordinates);
             Gdx.app.log("Mouse Unprojected", format("Mouse UX: %f, Mouse UY: %f", unprojectedCoordinates.x, unprojectedCoordinates.y));
-            context.setMousePosition(unprojectedCoordinates.x, unprojectedCoordinates.y);
+
+            if(unprojectedCoordinates.y <= 128) {
+                Vector3 flippedYCoordinates = new Vector3(unprojectedCoordinates.x, 128 - unprojectedCoordinates.y, 0);
+                context.setMousePosition(flippedYCoordinates);
+                Gdx.app.log("Mouse Flipped", format("Mouse FX: %f, Mouse FY: %f", flippedYCoordinates.x, flippedYCoordinates.y));
+            }
+
 
             context.setLmbDown(false);
         }

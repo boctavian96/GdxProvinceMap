@@ -32,8 +32,8 @@ public class StageScreen extends AbstractScreen {
     @Override
     public void show() {
         BasicInput inputProcessor = new BasicInput(context, camera);
-        Gdx.input.setInputProcessor(inputProcessor);
         stage = new Stage();
+        Gdx.input.setInputProcessor(inputProcessor);
 
         FileHandle fh = new FileHandle("assets/map/mapId.png");
         datamodel = XmlLoader.prepareDatamodel("assets/map/mapDatamodel.xml");

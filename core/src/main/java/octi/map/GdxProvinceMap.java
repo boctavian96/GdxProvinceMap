@@ -12,6 +12,9 @@ public class GdxProvinceMap extends Game {
 	private Vector3 mousePosition = Vector3.Zero;
 	private Vector2 resolution = new Vector2(640, 480);
 
+	private boolean lmbDown = false;
+	private boolean rmbDown = false;
+
 	@Override
 	public void create() {
 		setScreen(new StageScreen(this));
@@ -43,5 +46,21 @@ public class GdxProvinceMap extends Game {
 
 	public void setResolution(Vector2 resolution) {
 		this.resolution = resolution;
+	}
+
+	public boolean getLmbDown(){
+		return lmbDown;
+	}
+
+	public boolean getRmbDown(){
+		return rmbDown;
+	}
+
+	public void setLmbDown(boolean newLMB){
+		this.lmbDown = newLMB;
+	}
+
+	public void setRmbDown(boolean newRMB){
+		this.rmbDown = newRMB;
 	}
 }

@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Vector3;
 import octi.model.Point;
 import octi.model.Province;
 import octi.model.ProvinceMap;
+import octi.util.Version;
 import org.dom4j.Document;
 
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class ProvincePixmap extends Pixmap {
     private final List<Province> provinces;
     private final ProvinceMap provinceMap;
 
+    @Version(version = "0.1.1")
     public ProvincePixmap(FileHandle file) {
         super(file);
 

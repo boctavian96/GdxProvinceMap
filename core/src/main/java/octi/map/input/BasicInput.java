@@ -52,17 +52,24 @@ public class BasicInput implements InputProcessor {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        if(button == 0){
+            context.setLmbDown(true);
+        }
         return false;
     }
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        Gdx.app.log("Mouse Projected", format("Mouse X: %d, Mouse Y: %d", screenX, screenY));
-        Vector3 screenCoordinates = new Vector3(screenX, screenY, 0f);
-        Vector3 unprojectedCoordinates = camera.unproject(screenCoordinates);
+        if(button == 0 && context.getLmbDown()) {
+            Gdx.app.log("Mouse Projected", format("Mouse X: %d, Mouse Y: %d", screenX, screenY));
+            Vector3 screenCoordinates = new Vector3(screenX, screenY, 0f);
+            Vector3 unprojectedCoordinates = camera.unproject(screenCoordinates);
 
-        Gdx.app.log("Mouse Unprojected", format("Mouse UX: %f, Mouse UY: %f", unprojectedCoordinates.x, unprojectedCoordinates.y));
-        context.setMousePosition(unprojectedCoordinates.x, unprojectedCoordinates.y);
+            Gdx.app.log("Mouse Unprojected", format("Mouse UX: %f, Mouse UY: %f", unprojectedCoordinates.x, unprojectedCoordinates.y));
+            context.setMousePosition(unprojectedCoordinates.x, unprojectedCoordinates.y);
+
+            context.setLmbDown(false);
+        }
         return false;
     }
 

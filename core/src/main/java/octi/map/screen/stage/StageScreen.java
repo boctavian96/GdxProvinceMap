@@ -52,7 +52,7 @@ public class StageScreen extends AbstractScreen {
         Gdx.gl.glClearColor( 0, 0, 0, 1 );
         Gdx.gl.glClear( GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT );
 
-        if(context.getMousePosition().x != 0f && context.getMousePosition().y != 0f){
+        if(context.getLmbDown()){
             Point clickPoint = new Point(context.getMousePosition().x, context.getMousePosition().y);
             MapClick mapClick = new PoliticalMap(datamodel);
             Texture t = mc.generateMapClick(mapClick, clickPoint);

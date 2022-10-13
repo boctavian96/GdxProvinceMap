@@ -112,8 +112,17 @@ public class ProvincePixmap extends Pixmap {
         return new Vector3(mousePosition.x, getHeight() - mousePosition.y, 0);
     }
 
-    public void applyMask(){
-        //TODO: Implement me.
+    public void applyMask(Pixmap maskMap){
+        //TODO: Test me!
+        int height = getHeight();
+        int width = getWidth();
+
+        for(int x = 0; x <= width; x++){
+            for(int y = 0; y <= height; y++){
+                Color c = new Color(maskMap.getPixel(x % maskMap.getWidth(), y % maskMap.getHeight()));
+                drawPixel(x, y, c.toIntBits());
+            }
+        }
     }
 
     public ProvinceMap getProvinceMap(){

@@ -109,6 +109,7 @@ public class ProvincePixmap extends Pixmap {
      * @param mousePosition
      */
     public Vector3 transform(Vector3 mousePosition){
+        //TODO: Move in another class.
         return new Vector3(mousePosition.x, getHeight() - mousePosition.y, 0);
     }
 

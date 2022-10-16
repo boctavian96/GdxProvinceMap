@@ -72,8 +72,6 @@ public class BasicInput implements InputProcessor {
                 context.setMousePosition(flippedYCoordinates);
                 Gdx.app.log("Mouse Flipped", format("Mouse FX: %f, Mouse FY: %f", flippedYCoordinates.x, flippedYCoordinates.y));
             }
-
-
             context.setLmbDown(false);
         }
         return false;

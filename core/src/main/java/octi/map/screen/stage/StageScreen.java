@@ -1,11 +1,11 @@
 package octi.map.screen.stage;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import octi.map.GdxProvinceMap;
 import octi.map.input.BasicInput;
@@ -14,7 +14,6 @@ import octi.map.screen.stage.actor.WorldMapActor;
 import octi.mapframework.MapCreator;
 import octi.mapframework.maptype.MapType;
 import octi.mapframework.maptype.PoliticalMap;
-import octi.mapframework.maptype.actions.MapClick;
 import octi.mapframework.model.Point;
 import octi.mapframework.naming.ProvinceBitmap;
 import octi.mapframework.xml.XmlLoader;
@@ -35,9 +34,12 @@ public class StageScreen extends AbstractScreen {
     @Override
     public void show() {
         spriteBatch = new SpriteBatch();
+        InputMultiplexer multiplexer = new InputMultiplexer();
         BasicInput inputProcessor = new BasicInput(context, camera);
+
+        multiplexer.addProcessor(inputProcessor);
         stage = new Stage();
-        Gdx.input.setInputProcessor(inputProcessor);
+        Gdx.input.setInputProcessor(multiplexer);
 
         FileHandle fh = new FileHandle("assets/map/mapId.png");
         Document datamodel = XmlLoader.prepareDatamodel("assets/map/mapDatamodel.xml");
@@ -45,7 +47,8 @@ public class StageScreen extends AbstractScreen {
         mc = new MapCreator(fh, datamodel);
         MapType type = new PoliticalMap();
         Texture t = mc.generateMap(type);
-        WorldMapActor wma = new WorldMapActor(t);
+        WorldMapActor wma = new WorldMapActor(t, mc.getProvinceMap());
+        multiplexer.addProcessor(wma);
 
         provinceBitmap = new ProvinceBitmap();
 
@@ -57,15 +60,6 @@ public class StageScreen extends AbstractScreen {
         camera.update();
         Gdx.gl.glClearColor( 0, 0, 0, 1 );
         Gdx.gl.glClear( GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT );
-
-        if(context.getLmbDown()){
-            Point clickPoint = new Point(context.getMousePosition().x, context.getMousePosition().y);
-            MapClick mapClick = new PoliticalMap();
-            Texture t = mc.generateMapClick(mapClick, clickPoint);
-            WorldMapActor clickWma = new WorldMapActor(t);
-            stage.addActor(clickWma);
-            context.setMousePosition(Vector3.Zero);
-        }
 
         stage.draw();
         stage.act(delta);

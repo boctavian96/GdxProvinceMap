@@ -34,22 +34,36 @@ public class MapCreator {
         return new Texture(pixmap);
     }
 
-    @Experimental
-    public Texture generateMapClick(MapClick mapType, Point clickPoint){
-        ProvinceMap pm = mapType.clickColor(provinceMap.getProvinces(), clickPoint);
+    public static Texture generateMap(MapType mapType, ProvinceMap provinceMap){
+        ProvinceMap pm = mapType.generateMap(provinceMap);
         pixmap.updateProvinces(pm);
         return new Texture(pixmap);
     }
 
+    @Experimental
+    public Texture generateMapClick(MapClick mapType, Point clickPoint){
+        ProvinceMap pm = mapType.clickColor(provinceMap, clickPoint);
+        pixmap.updateProvinces(pm);
+        return new Texture(pixmap);
+    }
+
+    @Experimental
     public static Texture generateMapClick(MapClick mapClick, Point clickPoint, ProvinceMap provinceMap){
-        ProvinceMap pm = mapClick.clickColor(provinceMap.getProvinces(), clickPoint);
+        ProvinceMap pm = mapClick.clickColor(provinceMap, clickPoint);
         pixmap.updateProvinces(pm);
         return new Texture(pixmap);
     }
 
     @Experimental
     public Texture generateMapHover(MapHover mapHover, Point clickPoint){
-        //TODO: Implement me.
-        throw new UnsupportedOperationException("Not implemented yet...");
+        ProvinceMap pm = mapHover.hoverColor(provinceMap, clickPoint);
+        pixmap.updateProvinces(pm);
+        return new Texture(pixmap);
+    }
+
+    public static Texture generateMapHover(MapHover mapHover, Point clickPoint, ProvinceMap provinceMap){
+        ProvinceMap pm = mapHover.hoverColor(provinceMap, clickPoint);
+        pixmap.updateProvinces(pm);
+        return new Texture(pixmap);
     }
 }

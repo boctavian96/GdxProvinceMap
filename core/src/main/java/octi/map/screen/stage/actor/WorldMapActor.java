@@ -12,6 +12,7 @@ import octi.map.screen.AbstractScreen;
 import octi.mapframework.MapCreator;
 import octi.mapframework.maptype.PoliticalMap;
 import octi.mapframework.maptype.actions.MapClick;
+import octi.mapframework.maptype.actions.MapHover;
 import octi.mapframework.model.Point;
 import octi.mapframework.model.ProvinceMap;
 
@@ -19,6 +20,7 @@ public class WorldMapActor extends Actor implements InputProcessor {
     private Texture mapTexture;
     private Rectangle collisionRectangle;
     private ProvinceMap provinceMap;
+    private boolean mouseHoverActivated = false;
 
     public WorldMapActor(Texture t){
         this.mapTexture = t;
@@ -74,7 +76,7 @@ public class WorldMapActor extends Actor implements InputProcessor {
 
             if (collisionRectangle.contains(mousePointer.x, mousePointer.y) && provinceMap.containsPoint(new Point(mousePointer.x, mousePointer.y))) {
                 MapClick mapClick = new PoliticalMap();
-                ProvinceMap pm = mapClick.clickColor(provinceMap.getProvinces(), new Point(mousePointer.x, mousePointer.y));
+                ProvinceMap pm = mapClick.clickColor(provinceMap, new Point(mousePointer.x, mousePointer.y));
                 this.mapTexture = MapCreator.generateMapClick(mapClick, new Point(mousePointer.x, mousePointer.y), pm);
             }
         }else if(button == Input.Buttons.RIGHT){
@@ -90,14 +92,16 @@ public class WorldMapActor extends Actor implements InputProcessor {
 
     @Override
     public boolean mouseMoved(int screenX, int screenY) {
-        Vector3 mousePointer = new Vector3(screenX, screenY, 0);
-        mousePointer = AbstractScreen.unprojectCamera(mousePointer);
-        mousePointer = AbstractScreen.transform(mousePointer, (int) getHeight());
+        if(mouseHoverActivated) {
+            Vector3 mousePointer = new Vector3(screenX, screenY, 0);
+            mousePointer = AbstractScreen.unprojectCamera(mousePointer);
+            mousePointer = AbstractScreen.transform(mousePointer, (int) getHeight());
 
-        if (collisionRectangle.contains(mousePointer.x, mousePointer.y) && provinceMap.containsPoint(new Point(mousePointer.x, mousePointer.y))) {
-            MapClick mapClick = new PoliticalMap();
-            ProvinceMap pm = mapClick.clickColor(provinceMap.getProvinces(), new Point(mousePointer.x, mousePointer.y));
-            this.mapTexture = MapCreator.generateMapClick(mapClick, new Point(mousePointer.x, mousePointer.y), pm);
+            if (collisionRectangle.contains(mousePointer.x, mousePointer.y) && provinceMap.containsPoint(new Point(mousePointer.x, mousePointer.y))) {
+                MapHover mapHover = new PoliticalMap();
+                ProvinceMap pm = mapHover.hoverColor(provinceMap, new Point(mousePointer.x, mousePointer.y));
+                this.mapTexture = MapCreator.generateMapHover(mapHover, new Point(mousePointer.x, mousePointer.y), pm);
+            }
         }
 
         return false;

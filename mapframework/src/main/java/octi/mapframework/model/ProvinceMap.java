@@ -1,6 +1,7 @@
 package octi.mapframework.model;
 
 
+import com.badlogic.gdx.graphics.Color;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -16,9 +17,25 @@ public class ProvinceMap {
     private List<Province> provinces;
     @Getter @Setter
     private Document datamodel;
+    @Getter @Setter
+    private Color clickedProvinceId;
 
     public ProvinceMap(List<Province> provinceList){
         this.provinces = provinceList;
+    }
+
+    public ProvinceMap(List<Province> provinceList, Document datamodel){
+        this(provinceList);
+        this.datamodel = datamodel;
+    }
+
+    public Province getProvince(Color colorId){
+        for(Province province : provinces){
+            if(province.getProvinceColorId().equals(colorId)){
+                return province;
+            }
+        }
+        return null;
     }
 
     public boolean containsPoint(Point p){

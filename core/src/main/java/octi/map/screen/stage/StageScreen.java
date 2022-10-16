@@ -14,7 +14,6 @@ import octi.map.screen.stage.actor.WorldMapActor;
 import octi.mapframework.MapCreator;
 import octi.mapframework.maptype.MapType;
 import octi.mapframework.maptype.PoliticalMap;
-import octi.mapframework.model.Point;
 import octi.mapframework.naming.ProvinceBitmap;
 import octi.mapframework.xml.XmlLoader;
 import org.dom4j.Document;
@@ -41,8 +40,8 @@ public class StageScreen extends AbstractScreen {
         stage = new Stage();
         Gdx.input.setInputProcessor(multiplexer);
 
-        FileHandle fh = new FileHandle("assets/map/mapId.png");
-        Document datamodel = XmlLoader.prepareDatamodel("assets/map/mapDatamodel.xml");
+        FileHandle fh = new FileHandle("assets/map/testMap3/mapId.png");
+        Document datamodel = XmlLoader.prepareDatamodel("assets/map/testMap3/mapDatamodel.xml");
 
         mc = new MapCreator(fh, datamodel);
         MapType type = new PoliticalMap();
@@ -64,11 +63,13 @@ public class StageScreen extends AbstractScreen {
         stage.draw();
         stage.act(delta);
 
+        /*
         spriteBatch.begin();
         provinceBitmap.drawProvinceName(spriteBatch, "West", new Point(15, 87));
         provinceBitmap.drawProvinceName(spriteBatch, "Center", new Point(40, 99));
         provinceBitmap.drawProvinceName(spriteBatch, "East", new Point(66, 83));
         spriteBatch.end();
+         */
     }
 
     @Override

@@ -53,8 +53,7 @@ public class PoliticalMap implements MapType, MapClick, MapHover {
                         Province oldProvince = provinceMap.getProvince(provinceMap.getClickedProvinceId());
                         Node node = provinceMap.getDatamodel().selectSingleNode(String.format("//map//province[@id='%s']", oldProvince.getId()));
                         String owner = node.valueOf("ownerId");
-                        String[] playerColorId = owner.split(",");
-                        Color originalColor = ColorUtils.parseColor(playerColorId);
+                        Color originalColor = ColorUtils.parseColor(owner);
                         oldProvince.setProvinceColor(originalColor);
                     }
                 }
@@ -64,7 +63,7 @@ public class PoliticalMap implements MapType, MapClick, MapHover {
                 //Color with click color;
                 Gdx.app.log("DEBUG", "Coloring the clicked province");
                 Color originalColor = province.getProvinceColor();
-                Color clickColor = originalColor.add(0.30f, 0.30f, 0.30f, 0f);
+                Color clickColor = originalColor.add(0.40f, 0.40f, 0.40f, 0f);
                 province.setProvinceColor(clickColor);
             }
         }

@@ -1,0 +1,146 @@
+<map>
+    <province id="0">
+        <name>Idk</name>
+        <terrainType>Mountains</terrainType>
+        <wealth>3000</wealth>
+        <ownerId>1,0,0</ownerId>
+    </province>
+    <province id="1">
+        <name>Felwinter</name>
+        <terrainType>Plains</terrainType>
+        <wealth>2000</wealth>
+        <ownerId>123,16,125</ownerId>
+    </province>
+    <province id="2">
+        <name>Winterfel</name>
+        <terrainType>Plains</terrainType>
+        <wealth>1000</wealth>
+        <ownerId>0,0,1</ownerId>
+    </province>
+    <province id="3">
+        <name>Idk</name>
+        <terrainType>Mountains</terrainType>
+        <wealth>3000</wealth>
+        <ownerId>1,0,0</ownerId>
+    </province>
+    <province id="4">
+        <name>Felwinter</name>
+        <terrainType>Plains</terrainType>
+        <wealth>2000</wealth>
+        <ownerId>123,16,125</ownerId>
+    </province>
+    <province id="5">
+        <name>Winterfel</name>
+        <terrainType>Plains</terrainType>
+        <wealth>1000</wealth>
+        <ownerId>0,0,1</ownerId>
+    </province>
+    <province id="6">
+        <name>Idk</name>
+        <terrainType>Mountains</terrainType>
+        <wealth>3000</wealth>
+        <ownerId>1,0,0</ownerId>
+    </province>
+    <province id="7">
+        <name>Felwinter</name>
+        <terrainType>Plains</terrainType>
+        <wealth>2000</wealth>
+        <ownerId>123,16,125</ownerId>
+    </province>
+    <province id="8">
+        <name>Winterfel</name>
+        <terrainType>Plains</terrainType>
+        <wealth>1000</wealth>
+        <ownerId>0,0,1</ownerId>
+    </province>
+    <province id="9">
+        <name>Idk</name>
+        <terrainType>Mountains</terrainType>
+        <wealth>3000</wealth>
+        <ownerId>1,0,0</ownerId>
+    </province>
+    <province id="10">
+        <name>Felwinter</name>
+        <terrainType>Plains</terrainType>
+        <wealth>2000</wealth>
+        <ownerId>123,16,125</ownerId>
+    </province>
+    <province id="11">
+        <name>Winterfel</name>
+        <terrainType>Plains</terrainType>
+        <wealth>1000</wealth>
+        <ownerId>0,0,1</ownerId>
+    </province>
+    <province id="12">
+        <name>Idk</name>
+        <terrainType>Mountains</terrainType>
+        <wealth>3000</wealth>
+        <ownerId>1,0,0</ownerId>
+    </province>
+    <province id="13">
+        <name>Felwinter</name>
+        <terrainType>Plains</terrainType>
+        <wealth>2000</wealth>
+        <ownerId>123,16,125</ownerId>
+    </province>
+    <province id="14">
+        <name>Winterfel</name>
+        <terrainType>Plains</terrainType>
+        <wealth>1000</wealth>
+        <ownerId>0,0,1</ownerId>
+    </province>
+    <province id="15">
+        <name>Idk</name>
+        <terrainType>Mountains</terrainType>
+        <wealth>3000</wealth>
+        <ownerId>1,0,0</ownerId>
+    </province>
+    <province id="16">
+        <name>Felwinter</name>
+        <terrainType>Plains</terrainType>
+        <wealth>2000</wealth>
+        <ownerId>123,16,125</ownerId>
+    </province>
+    <province id="17">
+        <name>Winterfel</name>
+        <terrainType>Plains</terrainType>
+        <wealth>1000</wealth>
+        <ownerId>0,0,1</ownerId>
+    </province>
+    <province id="18">
+        <name>Idk</name>
+        <terrainType>Mountains</terrainType>
+        <wealth>3000</wealth>
+        <ownerId>1,0,0</ownerId>
+    </province>
+    <province id="19">
+        <name>Felwinter</name>
+        <terrainType>Plains</terrainType>
+        <wealth>2000</wealth>
+        <ownerId>123,16,125</ownerId>
+    </province>
+    <province id="20">
+        <name>Winterfel</name>
+        <terrainType>Plains</terrainType>
+        <wealth>1000</wealth>
+        <ownerId>0,0,1</ownerId>
+    </province>
+    <province id="21">
+        <name>Idk</name>
+        <terrainType>Mountains</terrainType>
+        <wealth>3000</wealth>
+        <ownerId>1,0,0</ownerId>
+    </province>
+    <province id="22">
+        <name>Felwinter</name>
+        <terrainType>Plains</terrainType>
+        <wealth>2000</wealth>
+        <ownerId>123,16,125</ownerId>
+    </province>
+    <province id="23">
+        <name>Winterfel</name>
+        <terrainType>Plains</terrainType>
+        <wealth>1000</wealth>
+        <ownerId>0,0,1</ownerId>
+    </province>
+</map>

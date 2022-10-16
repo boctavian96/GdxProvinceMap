@@ -47,7 +47,7 @@ public class ProvincePixmap extends Pixmap {
             for(int y = 0; y<height; y++){
                 Color c = new Color(getPixel(x, y));
 
-                if(c.equals(Color.BLACK) || c.a == 0){
+                if(c.equals(Color.BLACK) || c.a < 1){
                     continue;
                 }
                 colorSet.add(new Color(getPixel(x, y)));

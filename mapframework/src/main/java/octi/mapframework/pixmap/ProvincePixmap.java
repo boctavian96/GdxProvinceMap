@@ -4,7 +4,7 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.math.Vector3;
-import jdk.jfr.Experimental;
+import octi.mapframework.meta.Experimental;
 import octi.mapframework.model.Point;
 import octi.mapframework.model.Province;
 import octi.mapframework.model.ProvinceMap;
@@ -104,6 +104,42 @@ public class ProvincePixmap extends Pixmap {
         }
     }
 
+    @Experimental
+    public void trackOutline(Set<Color> colorIds){
+        for(Color id : colorIds){
+            for(int x = 1; x <= getWidth()-1; x++){
+                for(int y = 1; y<= getHeight()-1; y++){
+                    if(isABorderPixel(x, y)){
+                        //TODO: Implement me!
+                    }
+                }
+            }
+        }
+    }
+
+    @Experimental
+    public boolean isABorderPixel(int x, int y){
+        int pixel = getPixel(x, y);
+        int topPixel = getPixel(x, y+1);
+        int bottomPixel = getPixel(x, y-1);
+        int leftPixel = getPixel(x-1, y);
+        int rightPixel = getPixel(x+1, y);
+        int topLeft = getPixel(x-1, y+1);
+        int topRight = getPixel(x+1, y+1);
+        int bottomLeft = getPixel(x-1, y-1);
+        int bottomRight = getPixel(x+1, y-1);
+
+        return (pixel != topPixel) ||
+                (pixel != bottomPixel) ||
+                (pixel != leftPixel) ||
+                (pixel != rightPixel) ||
+                (pixel != topLeft) ||
+                (pixel != topRight) ||
+                (pixel != bottomLeft) ||
+                (pixel != bottomRight);
+    }
+
+    @Experimental
     public void applyMask(Pixmap maskMap){
         //TODO: Test me!
         int height = getHeight();

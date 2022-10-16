@@ -40,8 +40,8 @@ public class StageScreen extends AbstractScreen {
         stage = new Stage();
         Gdx.input.setInputProcessor(multiplexer);
 
-        FileHandle fh = new FileHandle("assets/map/testMap3/mapId.png");
-        Document datamodel = XmlLoader.prepareDatamodel("assets/map/testMap3/mapDatamodel.xml");
+        FileHandle fh = new FileHandle("assets/map/testMap2/mapId.png");
+        Document datamodel = XmlLoader.prepareDatamodel("assets/map/testMap2/mapDatamodel.xml");
 
         mc = new MapCreator(fh, datamodel);
         MapType type = new PoliticalMap();
@@ -62,14 +62,6 @@ public class StageScreen extends AbstractScreen {
 
         stage.draw();
         stage.act(delta);
-
-        /*
-        spriteBatch.begin();
-        provinceBitmap.drawProvinceName(spriteBatch, "West", new Point(15, 87));
-        provinceBitmap.drawProvinceName(spriteBatch, "Center", new Point(40, 99));
-        provinceBitmap.drawProvinceName(spriteBatch, "East", new Point(66, 83));
-        spriteBatch.end();
-         */
     }
 
     @Override

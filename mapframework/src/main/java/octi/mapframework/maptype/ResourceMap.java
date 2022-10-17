@@ -12,7 +12,7 @@ import org.dom4j.Node;
 
 import java.util.List;
 
-public class ResourceMap implements MapType, MapClick, MapHover {
+public class ResourceMap implements MapType {
 
     @Override
     public ProvinceMap generateMap(ProvinceMap provinceMap) {
@@ -47,16 +47,5 @@ public class ResourceMap implements MapType, MapClick, MapHover {
         float f = Float.valueOf(actualValue)/Float.valueOf(maximumValue);
 
         return new Color(1F - f,0F + f,0,1);
-    }
-
-
-    @Override
-    public ProvinceMap clickColor(ProvinceMap provinceMap, Point clickPoint) {
-        return new MapClickImpl().clickColor(provinceMap, clickPoint);
-    }
-
-    @Override
-    public ProvinceMap hoverColor(ProvinceMap provinceMap, Point clickPoint) {
-        return new MapHoverImpl().hoverColor(provinceMap, clickPoint);
     }
 }

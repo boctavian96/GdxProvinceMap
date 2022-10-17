@@ -5,7 +5,6 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import octi.map.GdxProvinceMap;
@@ -16,7 +15,8 @@ import octi.map.screen.stage.widget.MapModeWidget;
 import octi.mapframework.MapCreator;
 import octi.mapframework.maptype.MapType;
 import octi.mapframework.maptype.PoliticalMap;
-import octi.mapframework.naming.ProvinceBitmap;
+import octi.mapframework.maptype.ResourceMap;
+import octi.mapframework.maptype.TerrainMap;
 import octi.mapframework.xml.XmlLoader;
 import org.dom4j.Document;
 
@@ -25,8 +25,10 @@ public class StageScreen extends AbstractScreen {
     private Stage stage;
     private Stage hud;
     private MapCreator mc;
-    private SpriteBatch spriteBatch;
-    private ProvinceBitmap provinceBitmap;
+
+    private WorldMapActor wmaPolitical;
+    private WorldMapActor wmaResource;
+    private WorldMapActor wmaTerrain;
 
     public StageScreen(GdxProvinceMap context){
         super(context);
@@ -35,7 +37,6 @@ public class StageScreen extends AbstractScreen {
 
     @Override
     public void show() {
-        spriteBatch = new SpriteBatch();
         InputMultiplexer multiplexer = new InputMultiplexer();
         BasicInput inputProcessor = new BasicInput(context, camera);
 
@@ -48,19 +49,31 @@ public class StageScreen extends AbstractScreen {
         Document datamodel = XmlLoader.prepareDatamodel("assets/map/testMap2/mapDatamodel.xml");
 
         mc = new MapCreator(fh, datamodel);
-        MapType type = new PoliticalMap();
-        Texture t = mc.generateMap(type);
-        WorldMapActor wma = new WorldMapActor(t, mc.getProvinceMap());
-        multiplexer.addProcessor(wma);
+        MapType politicalMap = new PoliticalMap();
+        MapType resourceMap = new ResourceMap();
+        MapType terrainMap = new TerrainMap();
+        Texture tPolitical = mc.generateMap(politicalMap);
+        Texture tResource = mc.generateMap(resourceMap);
+        Texture tTerrain = mc.generateMap(terrainMap);
 
-        provinceBitmap = new ProvinceBitmap();
+        wmaPolitical = new WorldMapActor(tPolitical, mc.getProvinceMap());
+        wmaResource = new WorldMapActor(tResource, mc.getProvinceMap());
+        wmaTerrain = new WorldMapActor(tTerrain, mc.getProvinceMap());
 
-        stage.addActor(wma);
+        wmaResource.setVisible(false);
+        wmaTerrain.setVisible(false);
+
+        multiplexer.addProcessor(wmaPolitical);
+
+        stage.addActor(wmaPolitical);
+        stage.addActor(wmaResource);
+        stage.addActor(wmaTerrain);
         Gdx.input.setInputProcessor(multiplexer);
     }
 
     @Override
     public void render(float delta) {
+        handleState();
         camera.update();
         Gdx.gl.glClearColor( 0, 0, 0, 1 );
         Gdx.gl.glClear( GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT );
@@ -72,13 +85,37 @@ public class StageScreen extends AbstractScreen {
         hud.act(delta);
     }
 
+    private void handleState(){
+        if(context.isMapStateChanged()) {
+            if (context.getMapState() == 0) {
+                //Political Map.
+                stage.getActors().get(0).setVisible(true);
+                stage.getActors().get(1).setVisible(false);
+                stage.getActors().get(2).setVisible(false);
+            }
+            if (context.getMapState() == 1) {
+                //Resource Map.
+                stage.getActors().get(0).setVisible(false);
+                stage.getActors().get(1).setVisible(true);
+                stage.getActors().get(2).setVisible(false);
+            }
+            if (context.getMapState() == 2) {
+                //Terrain Map.
+                stage.getActors().get(0).setVisible(false);
+                stage.getActors().get(1).setVisible(false);
+                stage.getActors().get(2).setVisible(true);
+            }
+            context.acted();
+        }
+    }
+
     private Stage prepareHud(){
         Stage ui = new Stage();
 
         Table table = new Table();
         table.setFillParent(true);
         ui.addActor(table);
-        table.top().add(new MapModeWidget());
+        table.top().add(new MapModeWidget(context));
 
         return ui;
     }

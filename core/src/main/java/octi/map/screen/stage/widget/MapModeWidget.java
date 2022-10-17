@@ -7,9 +7,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import octi.map.GdxProvinceMap;
 
 public class MapModeWidget extends WidgetGroup {
-    public MapModeWidget(){
+    public MapModeWidget(GdxProvinceMap context){
         Table table = new Table();
         Skin skin = new Skin(Gdx.files.internal("ui/uiskin.json"));
 
@@ -19,7 +20,7 @@ public class MapModeWidget extends WidgetGroup {
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
                 super.touchUp(event, x, y, pointer, button);
-                Gdx.app.log("UI", "Clicked pMap");
+                context.setMapState(0);
             }
         });
 
@@ -28,7 +29,7 @@ public class MapModeWidget extends WidgetGroup {
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
                 super.touchUp(event, x, y, pointer, button);
-                Gdx.app.log("UI", "Clicked rMap");
+                context.setMapState(1);
             }
         });
 
@@ -37,7 +38,7 @@ public class MapModeWidget extends WidgetGroup {
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
                 super.touchUp(event, x, y, pointer, button);
-                Gdx.app.log("UI", "Clicked tMap");
+                context.setMapState(2);
             }
         });
 

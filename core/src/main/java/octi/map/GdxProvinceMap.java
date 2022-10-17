@@ -8,6 +8,7 @@ import octi.map.screen.stage.StageScreen;
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class GdxProvinceMap extends Game {
+	private boolean mapStateChanged = false;
 	private int mapState = 0;
 	private Vector3 mousePosition = Vector3.Zero;
 	private Vector2 resolution = new Vector2(640, 480);
@@ -22,6 +23,7 @@ public class GdxProvinceMap extends Game {
 
 	public void setMapState(int newState){
 		this.mapState = newState;
+		mapStateChanged = true;
 	}
 
 	public void setMousePosition(float x, float y){
@@ -34,6 +36,14 @@ public class GdxProvinceMap extends Game {
 
 	public int getMapState(){
 		return this.mapState;
+	}
+
+	public boolean isMapStateChanged(){
+		return this.mapStateChanged;
+	}
+
+	public void acted(){
+		this.mapStateChanged = false;
 	}
 
 	public Vector3 getMousePosition(){

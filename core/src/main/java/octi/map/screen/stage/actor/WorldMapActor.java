@@ -16,13 +16,12 @@ import octi.mapframework.maptype.actions.MapHover;
 import octi.mapframework.model.Point;
 import octi.mapframework.model.ProvinceMap;
 import octi.mapframework.naming.ProvinceBitmap;
-import org.dom4j.Document;
 
 public class WorldMapActor extends Actor implements InputProcessor {
     private Texture mapTexture;
     private Rectangle collisionRectangle;
     private ProvinceMap provinceMap;
-    private boolean mouseHoverActivated = true;
+    private boolean mouseHoverActivated = false;
     private ProvinceBitmap pbmp;
 
     public WorldMapActor(Texture t){

@@ -7,10 +7,12 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import octi.map.GdxProvinceMap;
 import octi.map.input.BasicInput;
 import octi.map.screen.AbstractScreen;
 import octi.map.screen.stage.actor.WorldMapActor;
+import octi.map.screen.stage.widget.MapModeWidget;
 import octi.mapframework.MapCreator;
 import octi.mapframework.maptype.MapType;
 import octi.mapframework.maptype.PoliticalMap;
@@ -21,6 +23,7 @@ import org.dom4j.Document;
 public class StageScreen extends AbstractScreen {
 
     private Stage stage;
+    private Stage hud;
     private MapCreator mc;
     private SpriteBatch spriteBatch;
     private ProvinceBitmap provinceBitmap;
@@ -38,7 +41,8 @@ public class StageScreen extends AbstractScreen {
 
         multiplexer.addProcessor(inputProcessor);
         stage = new Stage();
-        Gdx.input.setInputProcessor(multiplexer);
+        hud = prepareHud();
+        multiplexer.addProcessor(hud);
 
         FileHandle fh = new FileHandle("assets/map/testMap2/mapId.png");
         Document datamodel = XmlLoader.prepareDatamodel("assets/map/testMap2/mapDatamodel.xml");
@@ -52,6 +56,7 @@ public class StageScreen extends AbstractScreen {
         provinceBitmap = new ProvinceBitmap();
 
         stage.addActor(wma);
+        Gdx.input.setInputProcessor(multiplexer);
     }
 
     @Override
@@ -62,6 +67,20 @@ public class StageScreen extends AbstractScreen {
 
         stage.draw();
         stage.act(delta);
+
+        hud.draw();
+        hud.act(delta);
+    }
+
+    private Stage prepareHud(){
+        Stage ui = new Stage();
+
+        Table table = new Table();
+        table.setFillParent(true);
+        ui.addActor(table);
+        table.top().add(new MapModeWidget());
+
+        return ui;
     }
 
     @Override

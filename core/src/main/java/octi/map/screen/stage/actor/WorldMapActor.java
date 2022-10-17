@@ -22,7 +22,7 @@ public class WorldMapActor extends Actor implements InputProcessor {
     private Texture mapTexture;
     private Rectangle collisionRectangle;
     private ProvinceMap provinceMap;
-    private boolean mouseHoverActivated = false;
+    private boolean mouseHoverActivated = true;
     private ProvinceBitmap pbmp;
 
     public WorldMapActor(Texture t){

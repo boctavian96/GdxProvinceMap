@@ -1,6 +1,5 @@
 package octi.mapframework.maptype;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import octi.mapframework.maptype.actions.MapClick;
 import octi.mapframework.maptype.actions.MapHover;
@@ -11,7 +10,6 @@ import octi.mapframework.util.ColorUtils;
 import org.dom4j.Node;
 
 import java.util.List;
-import java.util.Objects;
 
 import static java.util.Objects.nonNull;
 
@@ -45,11 +43,9 @@ public class PoliticalMap implements MapType, MapClick, MapHover {
 
                     if(provinceMap.getClickedProvinceId().equals(province.getProvinceColorId())){
                         //We click again the already selected province.
-                        Gdx.app.log("DEBUG", "Clicked the same province.");
                         return provinceMap;
                     }else{
                         //Recolor the old province back.
-                        Gdx.app.log("DEBUG", "Recolor the old province.");
                         Province oldProvince = provinceMap.getProvince(provinceMap.getClickedProvinceId());
                         Node node = provinceMap.getDatamodel().selectSingleNode(String.format("//map//province[@id='%s']", oldProvince.getId()));
                         String owner = node.valueOf("ownerId");
@@ -61,7 +57,6 @@ public class PoliticalMap implements MapType, MapClick, MapHover {
                 provinceMap.setClickedProvinceId(province.getProvinceColorId());
 
                 //Color with click color;
-                Gdx.app.log("DEBUG", "Coloring the clicked province");
                 Color originalColor = province.getProvinceColor();
                 Color clickColor = originalColor.add(0.40f, 0.40f, 0.40f, 0f);
                 province.setProvinceColor(clickColor);
@@ -72,13 +67,6 @@ public class PoliticalMap implements MapType, MapClick, MapHover {
 
     @Override
     public ProvinceMap hoverColor(ProvinceMap provinceMap, Point clickPoint) {
-        for (Province province : provinceMap.getProvinces()){
-            if(province.getPointList().contains(clickPoint)){
-                Color originalColor = province.getProvinceColor();
-                Color hoverColor = originalColor.add(0.01f, 0.01f, 0.01f, 0f);
-                province.setProvinceColor(hoverColor);
-            }
-        }
-        return provinceMap;
+        return clickColor(provinceMap, clickPoint);
     }
 }

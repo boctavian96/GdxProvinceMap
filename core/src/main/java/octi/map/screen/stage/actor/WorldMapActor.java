@@ -3,6 +3,7 @@ package octi.map.screen.stage.actor;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Rectangle;
@@ -10,12 +11,14 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.*;
 import octi.map.screen.AbstractScreen;
 import octi.mapframework.MapCreator;
+import octi.mapframework.maptype.MapType;
 import octi.mapframework.maptype.PoliticalMap;
 import octi.mapframework.maptype.actions.MapClick;
 import octi.mapframework.maptype.actions.MapHover;
 import octi.mapframework.model.Point;
 import octi.mapframework.model.ProvinceMap;
 import octi.mapframework.naming.ProvinceBitmap;
+import org.dom4j.Document;
 
 public class WorldMapActor extends Actor implements InputProcessor {
     private Texture mapTexture;
@@ -23,6 +26,20 @@ public class WorldMapActor extends Actor implements InputProcessor {
     private ProvinceMap provinceMap;
     private boolean mouseHoverActivated = false;
     private ProvinceBitmap pbmp;
+    private MapCreator mapManager;
+
+    public WorldMapActor(FileHandle fh, Document doc, MapType mapType){
+        mapManager = new MapCreator(fh, doc);
+        this.mapTexture = mapManager.generateMap(mapType);
+        this.provinceMap = mapManager.getProvinceMap();
+        setWidth(mapTexture.getWidth());
+        setHeight(mapTexture.getHeight());
+        setX(0);
+        setY(0);
+        collisionRectangle = new Rectangle(0, 0, getWidth(), getHeight());
+        setTouchable(Touchable.enabled);
+        pbmp = new ProvinceBitmap();
+    }
 
     public WorldMapActor(Texture t){
         this.mapTexture = t;
@@ -80,7 +97,7 @@ public class WorldMapActor extends Actor implements InputProcessor {
             if (collisionRectangle.contains(mousePointer.x, mousePointer.y) && provinceMap.containsPoint(new Point(mousePointer.x, mousePointer.y))) {
                 MapClick mapClick = new PoliticalMap();
                 ProvinceMap pm = mapClick.clickColor(provinceMap, new Point(mousePointer.x, mousePointer.y));
-                this.mapTexture = MapCreator.generateMapClick(mapClick, new Point(mousePointer.x, mousePointer.y), pm);
+                this.mapTexture = mapManager.generateMapClick(mapClick, new Point(mousePointer.x, mousePointer.y), pm);
             }
         }else if(button == Input.Buttons.RIGHT){
             Gdx.app.log("Actor touch", "RMB pushed");

@@ -56,9 +56,9 @@ public class StageScreen extends AbstractScreen {
         Texture tResource = mc.generateMap(resourceMap);
         Texture tTerrain = mc.generateMap(terrainMap);
 
-        wmaPolitical = new WorldMapActor(tPolitical, mc.getProvinceMap());
-        wmaResource = new WorldMapActor(tResource, mc.getProvinceMap());
-        wmaTerrain = new WorldMapActor(tTerrain, mc.getProvinceMap());
+        wmaPolitical = new WorldMapActor(fh, datamodel, new PoliticalMap());
+        wmaResource = new WorldMapActor(fh, datamodel, new ResourceMap());
+        wmaTerrain = new WorldMapActor(fh, datamodel, new TerrainMap());
 
         wmaResource.setVisible(false);
         wmaTerrain.setVisible(false);

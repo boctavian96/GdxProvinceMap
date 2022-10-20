@@ -9,7 +9,6 @@ import octi.mapframework.maptype.actions.MapHover;
 import octi.mapframework.model.Point;
 import octi.mapframework.model.ProvinceMap;
 import octi.mapframework.pixmap.ProvincePixmap;
-import octi.mapframework.meta.Experimental;
 import org.dom4j.Document;
 
 public class MapCreator {
@@ -34,34 +33,13 @@ public class MapCreator {
         return new Texture(pixmap);
     }
 
-    public static Texture generateMap(MapType mapType, ProvinceMap provinceMap){
-        ProvinceMap pm = mapType.generateMap(provinceMap);
-        pixmap.updateProvinces(pm);
-        return new Texture(pixmap);
-    }
-
-    @Experimental
     public Texture generateMapClick(MapClick mapType, Point clickPoint){
         ProvinceMap pm = mapType.clickColor(provinceMap, clickPoint);
         pixmap.updateProvinces(pm);
         return new Texture(pixmap);
     }
 
-    @Experimental
-    public static Texture generateMapClick(MapClick mapClick, Point clickPoint, ProvinceMap provinceMap){
-        ProvinceMap pm = mapClick.clickColor(provinceMap, clickPoint);
-        pixmap.updateProvinces(pm);
-        return new Texture(pixmap);
-    }
-
-    @Experimental
     public Texture generateMapHover(MapHover mapHover, Point clickPoint){
-        ProvinceMap pm = mapHover.hoverColor(provinceMap, clickPoint);
-        pixmap.updateProvinces(pm);
-        return new Texture(pixmap);
-    }
-
-    public static Texture generateMapHover(MapHover mapHover, Point clickPoint, ProvinceMap provinceMap){
         ProvinceMap pm = mapHover.hoverColor(provinceMap, clickPoint);
         pixmap.updateProvinces(pm);
         return new Texture(pixmap);

@@ -6,6 +6,7 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import octi.map.GdxProvinceMap;
 import octi.map.input.BasicInput;
@@ -49,12 +50,6 @@ public class StageScreen extends AbstractScreen {
         Document datamodel = XmlLoader.prepareDatamodel("assets/map/testMap2/mapDatamodel.xml");
 
         mc = new MapCreator(fh, datamodel);
-        MapType politicalMap = new PoliticalMap();
-        MapType resourceMap = new ResourceMap();
-        MapType terrainMap = new TerrainMap();
-        Texture tPolitical = mc.generateMap(politicalMap);
-        Texture tResource = mc.generateMap(resourceMap);
-        Texture tTerrain = mc.generateMap(terrainMap);
 
         wmaPolitical = new WorldMapActor(fh, datamodel, new PoliticalMap());
         wmaResource = new WorldMapActor(fh, datamodel, new ResourceMap());
@@ -64,6 +59,8 @@ public class StageScreen extends AbstractScreen {
         wmaTerrain.setVisible(false);
 
         multiplexer.addProcessor(wmaPolitical);
+        multiplexer.addProcessor(wmaResource);
+        multiplexer.addProcessor(wmaTerrain);
 
         stage.addActor(wmaPolitical);
         stage.addActor(wmaResource);
@@ -90,20 +87,29 @@ public class StageScreen extends AbstractScreen {
             if (context.getMapState() == 0) {
                 //Political Map.
                 stage.getActors().get(0).setVisible(true);
+                stage.getActors().get(0).setTouchable(Touchable.enabled);
                 stage.getActors().get(1).setVisible(false);
+                stage.getActors().get(1).setTouchable(Touchable.disabled);
                 stage.getActors().get(2).setVisible(false);
+                stage.getActors().get(2).setTouchable(Touchable.disabled);
             }
             if (context.getMapState() == 1) {
                 //Resource Map.
                 stage.getActors().get(0).setVisible(false);
+                stage.getActors().get(0).setTouchable(Touchable.disabled);
                 stage.getActors().get(1).setVisible(true);
+                stage.getActors().get(1).setTouchable(Touchable.enabled);
                 stage.getActors().get(2).setVisible(false);
+                stage.getActors().get(2).setTouchable(Touchable.disabled);
             }
             if (context.getMapState() == 2) {
                 //Terrain Map.
                 stage.getActors().get(0).setVisible(false);
+                stage.getActors().get(0).setTouchable(Touchable.disabled);
                 stage.getActors().get(1).setVisible(false);
+                stage.getActors().get(1).setTouchable(Touchable.disabled);
                 stage.getActors().get(2).setVisible(true);
+                stage.getActors().get(2).setTouchable(Touchable.enabled);
             }
             context.acted();
         }

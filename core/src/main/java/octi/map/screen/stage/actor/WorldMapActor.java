@@ -27,34 +27,21 @@ public class WorldMapActor extends Actor implements InputProcessor {
     private boolean mouseHoverActivated = false;
     private ProvinceBitmap pbmp;
     private MapCreator mapManager;
+    private MapClick mapClick;
+    private MapHover mapHover;
 
     public WorldMapActor(FileHandle fh, Document doc, MapType mapType){
         mapManager = new MapCreator(fh, doc);
         this.mapTexture = mapManager.generateMap(mapType);
+        mapClick = (MapClick) mapType;
+        mapHover = (MapHover) mapType;
         this.provinceMap = mapManager.getProvinceMap();
         setWidth(mapTexture.getWidth());
         setHeight(mapTexture.getHeight());
         setX(0);
         setY(0);
         collisionRectangle = new Rectangle(0, 0, getWidth(), getHeight());
-        setTouchable(Touchable.enabled);
         pbmp = new ProvinceBitmap();
-    }
-
-    public WorldMapActor(Texture t){
-        this.mapTexture = t;
-        setWidth(mapTexture.getWidth());
-        setHeight(mapTexture.getHeight());
-        setX(0);
-        setY(0);
-        collisionRectangle = new Rectangle(0, 0, getWidth(), getHeight());
-        setTouchable(Touchable.enabled);
-        pbmp = new ProvinceBitmap();
-    }
-
-    public WorldMapActor(Texture t, ProvinceMap pm){
-        this(t);
-        this.provinceMap = pm;
     }
 
     @Override
@@ -95,9 +82,7 @@ public class WorldMapActor extends Actor implements InputProcessor {
             mousePointer = AbstractScreen.transform(mousePointer, (int) getHeight());
 
             if (collisionRectangle.contains(mousePointer.x, mousePointer.y) && provinceMap.containsPoint(new Point(mousePointer.x, mousePointer.y))) {
-                MapClick mapClick = new PoliticalMap();
-                ProvinceMap pm = mapClick.clickColor(provinceMap, new Point(mousePointer.x, mousePointer.y));
-                this.mapTexture = mapManager.generateMapClick(mapClick, new Point(mousePointer.x, mousePointer.y), pm);
+                this.mapTexture = mapManager.generateMapClick(mapClick, new Point(mousePointer.x, mousePointer.y));
             }
         }else if(button == Input.Buttons.RIGHT){
             Gdx.app.log("Actor touch", "RMB pushed");
@@ -118,9 +103,7 @@ public class WorldMapActor extends Actor implements InputProcessor {
             mousePointer = AbstractScreen.transform(mousePointer, (int) getHeight());
 
             if (collisionRectangle.contains(mousePointer.x, mousePointer.y) && provinceMap.containsPoint(new Point(mousePointer.x, mousePointer.y))) {
-                MapHover mapHover = new PoliticalMap();
-                ProvinceMap pm = mapHover.hoverColor(provinceMap, new Point(mousePointer.x, mousePointer.y));
-                this.mapTexture = MapCreator.generateMapHover(mapHover, new Point(mousePointer.x, mousePointer.y), pm);
+                this.mapTexture = mapManager.generateMapHover(mapHover, new Point(mousePointer.x, mousePointer.y));
             }
         }
 

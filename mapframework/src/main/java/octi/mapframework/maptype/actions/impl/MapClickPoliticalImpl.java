@@ -1,6 +1,7 @@
-package octi.mapframework.maptype.actions;
+package octi.mapframework.maptype.actions.impl;
 
 import com.badlogic.gdx.graphics.Color;
+import octi.mapframework.maptype.actions.MapClick;
 import octi.mapframework.model.Point;
 import octi.mapframework.model.Province;
 import octi.mapframework.model.ProvinceMap;
@@ -9,7 +10,7 @@ import org.dom4j.Node;
 
 import static java.util.Objects.nonNull;
 
-public class MapClickImpl implements MapClick {
+public class MapClickPoliticalImpl implements MapClick {
     @Override
     public ProvinceMap clickColor(ProvinceMap provinceMap, Point clickPoint) {
         for (Province province : provinceMap.getProvinces()){

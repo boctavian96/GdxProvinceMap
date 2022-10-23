@@ -1,6 +1,5 @@
 package octi.mapframework.maptype.actions.impl;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import octi.mapframework.maptype.actions.MapClick;
 import octi.mapframework.model.Point;
@@ -9,7 +8,7 @@ import octi.mapframework.model.ProvinceMap;
 
 import static java.util.Objects.nonNull;
 
-public class MapClickTerrainImpl implements MapClick {
+public class BasicMapClickImpl implements MapClick {
     private Color cachedColor;
 
     @Override
@@ -34,7 +33,6 @@ public class MapClickTerrainImpl implements MapClick {
 
                 Color clickColor = originalColor.add(0.40f, 0.40f, 0.40f, 0f);
                 province.setProvinceColor(clickColor);
-                return provinceMap;
             }
         }
         return provinceMap;

@@ -1,18 +1,19 @@
 package octi.mapframework.maptype.actions.impl;
 
 import com.badlogic.gdx.graphics.Color;
-import octi.mapframework.maptype.actions.MapClick;
+import octi.mapframework.maptype.actions.MapHover;
 import octi.mapframework.model.Point;
 import octi.mapframework.model.Province;
 import octi.mapframework.model.ProvinceMap;
 
 import static java.util.Objects.nonNull;
 
-public class MapClickResourceImpl implements MapClick {
+public class BasicMapHoverImpl implements MapHover {
+
     private Color cachedColor;
 
     @Override
-    public ProvinceMap clickColor(ProvinceMap provinceMap, Point clickPoint) {
+    public ProvinceMap hoverColor(ProvinceMap provinceMap, Point clickPoint) {
         for (Province province : provinceMap.getProvinces()){
             if(province.getPointList().contains(clickPoint)){
                 if(nonNull(provinceMap.getClickedProvinceId())){

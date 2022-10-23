@@ -12,7 +12,6 @@ import com.badlogic.gdx.scenes.scene2d.*;
 import octi.map.screen.AbstractScreen;
 import octi.mapframework.MapCreator;
 import octi.mapframework.maptype.MapType;
-import octi.mapframework.maptype.PoliticalMap;
 import octi.mapframework.maptype.actions.MapClick;
 import octi.mapframework.maptype.actions.MapHover;
 import octi.mapframework.model.Point;
@@ -24,7 +23,7 @@ public class WorldMapActor extends Actor implements InputProcessor {
     private Texture mapTexture;
     private Rectangle collisionRectangle;
     private ProvinceMap provinceMap;
-    private boolean mouseHoverActivated = false;
+    private boolean mouseHoverActivated = true;
     private ProvinceBitmap pbmp;
     private MapCreator mapManager;
     private MapClick mapClick;

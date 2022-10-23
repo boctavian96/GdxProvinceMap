@@ -3,8 +3,8 @@ package octi.mapframework.maptype;
 import com.badlogic.gdx.graphics.Color;
 import octi.mapframework.maptype.actions.MapClick;
 import octi.mapframework.maptype.actions.MapHover;
-import octi.mapframework.maptype.actions.impl.MapClickResourceImpl;
-import octi.mapframework.maptype.actions.impl.MapHoverPoliticalImpl;
+import octi.mapframework.maptype.actions.impl.BasicMapClickImpl;
+import octi.mapframework.maptype.actions.impl.BasicMapHoverImpl;
 import octi.mapframework.model.Point;
 import octi.mapframework.model.Province;
 import octi.mapframework.model.ProvinceMap;
@@ -14,7 +14,8 @@ import java.util.List;
 
 public class ResourceMap implements MapType, MapClick, MapHover {
 
-    private final MapClickResourceImpl mapClickResource = new MapClickResourceImpl();
+    private final BasicMapClickImpl mapClickResource = new BasicMapClickImpl();
+    private final BasicMapHoverImpl mapHoverResource = new BasicMapHoverImpl();
 
     @Override
     public ProvinceMap generateMap(ProvinceMap provinceMap) {
@@ -58,6 +59,6 @@ public class ResourceMap implements MapType, MapClick, MapHover {
 
     @Override
     public ProvinceMap hoverColor(ProvinceMap provinceMap, Point clickPoint) {
-        return new MapHoverPoliticalImpl().hoverColor(provinceMap, clickPoint);
+        return mapHoverResource.hoverColor(provinceMap, clickPoint);
     }
 }

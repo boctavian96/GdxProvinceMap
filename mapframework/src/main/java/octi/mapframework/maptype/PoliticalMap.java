@@ -66,7 +66,7 @@ public class PoliticalMap implements MapType, MapClick, MapHover {
     }
 
     @Override
-    public ProvinceMap hoverColor(ProvinceMap provinceMap, Point clickPoint) {
-        return clickColor(provinceMap, clickPoint);
+    public ProvinceMap hoverColor(ProvinceMap provinceMap, Point hoverPoint) {
+        return clickColor(provinceMap, hoverPoint);
     }
 }

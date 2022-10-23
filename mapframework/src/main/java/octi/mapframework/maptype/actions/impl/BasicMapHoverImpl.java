@@ -13,9 +13,9 @@ public class BasicMapHoverImpl implements MapHover {
     private Color cachedColor;
 
     @Override
-    public ProvinceMap hoverColor(ProvinceMap provinceMap, Point clickPoint) {
+    public ProvinceMap hoverColor(ProvinceMap provinceMap, Point hoverPoint) {
         for (Province province : provinceMap.getProvinces()){
-            if(province.getPointList().contains(clickPoint)){
+            if(province.getPointList().contains(hoverPoint)){
                 if(nonNull(provinceMap.getClickedProvinceId())){
                     if(provinceMap.getClickedProvinceId().equals(province.getProvinceColorId())){
                         //We click again the already selected province.

@@ -12,9 +12,9 @@ import static java.util.Objects.nonNull;
 
 public class MapHoverPoliticalImpl implements MapHover {
     @Override
-    public ProvinceMap hoverColor(ProvinceMap provinceMap, Point clickPoint) {
+    public ProvinceMap hoverColor(ProvinceMap provinceMap, Point hoverPoint) {
         for (Province province : provinceMap.getProvinces()){
-            if(province.getPointList().contains(clickPoint)){
+            if(province.getPointList().contains(hoverPoint)){
 
                 if(nonNull(provinceMap.getClickedProvinceId())){
 

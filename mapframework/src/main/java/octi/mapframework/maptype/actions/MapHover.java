@@ -5,5 +5,5 @@ import octi.mapframework.model.ProvinceMap;
 
 
 public interface MapHover {
-    ProvinceMap hoverColor(ProvinceMap provinceMap, Point clickPoint);
+    ProvinceMap hoverColor(ProvinceMap provinceMap, Point hoverPoint);
 }

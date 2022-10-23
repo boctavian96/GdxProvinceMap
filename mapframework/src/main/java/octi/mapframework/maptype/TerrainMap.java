@@ -48,7 +48,7 @@ public class TerrainMap implements MapType, MapClick, MapHover {
     }
 
     @Override
-    public ProvinceMap hoverColor(ProvinceMap provinceMap, Point clickPoint) {
-        return mapHoverTerrain.hoverColor(provinceMap, clickPoint);
+    public ProvinceMap hoverColor(ProvinceMap provinceMap, Point hoverPoint) {
+        return mapHoverTerrain.hoverColor(provinceMap, hoverPoint);
     }
 }

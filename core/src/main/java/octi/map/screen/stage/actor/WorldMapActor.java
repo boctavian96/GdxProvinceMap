@@ -15,16 +15,18 @@ import octi.mapframework.maptype.MapType;
 import octi.mapframework.maptype.actions.MapClick;
 import octi.mapframework.maptype.actions.MapHover;
 import octi.mapframework.model.Point;
+import octi.mapframework.model.Province;
 import octi.mapframework.model.ProvinceMap;
-import octi.mapframework.naming.ProvinceBitmap;
+import octi.mapframework.label.ProvinceBitmap;
 import org.dom4j.Document;
+
 
 public class WorldMapActor extends Actor implements InputProcessor {
     private Texture mapTexture;
     private Rectangle collisionRectangle;
     private ProvinceMap provinceMap;
     private boolean mouseHoverActivated = true;
-    private ProvinceBitmap pbmp;
+    private ProvinceBitmap labelProcessor;
     private MapCreator mapManager;
     private MapClick mapClick;
     private MapHover mapHover;
@@ -40,12 +42,14 @@ public class WorldMapActor extends Actor implements InputProcessor {
         setX(0);
         setY(0);
         collisionRectangle = new Rectangle(0, 0, getWidth(), getHeight());
-        pbmp = new ProvinceBitmap();
+        labelProcessor = new ProvinceBitmap();
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
         batch.draw(mapTexture, 0, 0);
+
+        labelProcessor.drawProvinceNames(batch, provinceMap.getDatamodel());
     }
 
     @Override

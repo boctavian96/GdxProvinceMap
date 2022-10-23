@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-version '0.4.43'
+version '0.5.50'
 
 repositories {
     mavenCentral()

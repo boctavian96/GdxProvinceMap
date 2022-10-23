@@ -64,7 +64,7 @@ public class BasicInput implements InputProcessor {
             //Gdx.app.log("Mouse Projected", format("Mouse X: %d, Mouse Y: %d", screenX, screenY));
 
             Vector3 unprojectedCoordinates = camera.unproject(screenCoordinates);
-            //Gdx.app.log("Mouse Unprojected", format("Mouse UX: %f, Mouse UY: %f", unprojectedCoordinates.x, unprojectedCoordinates.y));
+            Gdx.app.log("Mouse Unprojected", String.format("Mouse UX: %f, Mouse UY: %f", unprojectedCoordinates.x, unprojectedCoordinates.y));
 
             if(unprojectedCoordinates.y <= 128) {
                 Vector3 flippedYCoordinates = new Vector3(unprojectedCoordinates.x, 128 - unprojectedCoordinates.y, 0);

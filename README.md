@@ -5,3 +5,4 @@ Grand Strategy Province map using Libgdx
 ![GitHub contributors](https://img.shields.io/github/contributors/boctavian96/GdxProvinceMap)
 ![GitHub issues](https://img.shields.io/github/issues-raw/boctavian96/GdxProvinceMap)
 ![GitHub](https://img.shields.io/github/license/boctavian96/GdxProvinceMap)
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/boctavian96/GdxProvinceMap)

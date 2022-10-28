@@ -14,6 +14,9 @@ import octi.map.screen.AbstractScreen;
 import octi.map.screen.stage.actor.WorldMapActor;
 import octi.map.screen.stage.widget.MapModeWidget;
 import octi.mapframework.MapCreator;
+import octi.mapframework.label.impl.ProvinceNameLabel;
+import octi.mapframework.label.impl.ResourceCountLabel;
+import octi.mapframework.label.impl.TerrainTypeLabel;
 import octi.mapframework.maptype.MapType;
 import octi.mapframework.maptype.PoliticalMap;
 import octi.mapframework.maptype.ResourceMap;
@@ -46,14 +49,14 @@ public class StageScreen extends AbstractScreen {
         hud = prepareHud();
         multiplexer.addProcessor(hud);
 
-        FileHandle fh = new FileHandle("assets/map/testMap2/mapId.png");
-        Document datamodel = XmlLoader.prepareDatamodel("assets/map/testMap2/mapDatamodel.xml");
+        FileHandle fh = new FileHandle("assets/map/testMap1/mapId.png");
+        Document datamodel = XmlLoader.prepareDatamodel("assets/map/testMap1/mapDatamodel.xml");
 
         mc = new MapCreator(fh, datamodel);
 
-        wmaPolitical = new WorldMapActor(fh, datamodel, new PoliticalMap());
-        wmaResource = new WorldMapActor(fh, datamodel, new ResourceMap());
-        wmaTerrain = new WorldMapActor(fh, datamodel, new TerrainMap());
+        wmaPolitical = new WorldMapActor(fh, datamodel, new PoliticalMap(), new ProvinceNameLabel());
+        wmaResource = new WorldMapActor(fh, datamodel, new ResourceMap(), new ResourceCountLabel());
+        wmaTerrain = new WorldMapActor(fh, datamodel, new TerrainMap(), new TerrainTypeLabel());
 
         wmaResource.setVisible(false);
         wmaTerrain.setVisible(false);

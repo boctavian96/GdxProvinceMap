@@ -1,0 +1,24 @@
+<map>
+    <province id="0">
+        <name>West</name>
+        <terrainType>Mountains</terrainType>
+        <wealth>3000</wealth>
+        <ownerId>1,0,0</ownerId>
+        <center>22,90</center>
+    </province>
+    <province id="1">
+        <name>Center</name>
+        <terrainType>Plains</terrainType>
+        <wealth>2000</wealth>
+        <ownerId>0,1,0</ownerId>
+        <center>40,105</center>
+
+    </province>
+    <province id="2">
+        <name>East</name>
+        <terrainType>Plains</terrainType>
+        <wealth>1000</wealth>
+        <ownerId>0,0,1</ownerId>
+        <center>65,86</center>
+    </province>
+</map>

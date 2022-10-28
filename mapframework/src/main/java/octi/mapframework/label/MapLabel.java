@@ -7,11 +7,18 @@ import octi.mapframework.model.Point;
 import octi.mapframework.model.Province;
 import octi.mapframework.model.ProvinceMap;
 import org.dom4j.Document;
-import org.dom4j.Node;
 
 import java.util.List;
 
-public class ProvinceBitmap extends BitmapFont {
+public class MapLabel extends BitmapFont {
+
+    private ILabel labelStrategy;
+
+    public MapLabel(ILabel labelStrategy){
+        this.labelStrategy = labelStrategy;
+    }
+
+
     public GlyphLayout drawProvinceName(Batch batch, String provinceName, Point p){
         return super.draw(batch, provinceName, p.getX(), p.getY());
     }
@@ -22,18 +29,11 @@ public class ProvinceBitmap extends BitmapFont {
         }
     }
 
-    public void drawProvinceNames(Batch batch, Document doc){
-        if(doc.selectNodes("//province//center").isEmpty()){
-            return;
-        }
-        List<Node> nodes = doc.selectNodes("//province");
+    public void drawProvinceLabel(Batch batch, Document doc) {
+        List<LabelModel> model = labelStrategy.drawProvinceLabel(batch, doc);
 
-        for(Node n : nodes){
-            String coordinates = n.valueOf("center");
-            String name = n.valueOf("name");
-            Point p = new Point(coordinates);
-
-            super.draw(batch, name, p.getX(), p.getY());
+        for(LabelModel m : model){
+            super.draw(batch, m.getLabelName(), m.getLabelPosition().getX(), m.getLabelPosition().getY());
         }
     }
 }

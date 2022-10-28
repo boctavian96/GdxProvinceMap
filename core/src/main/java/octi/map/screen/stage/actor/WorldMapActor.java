@@ -11,14 +11,17 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.*;
 import octi.map.screen.AbstractScreen;
 import octi.mapframework.MapCreator;
+import octi.mapframework.label.ILabel;
+import octi.mapframework.label.impl.ProvinceNameLabel;
 import octi.mapframework.maptype.MapType;
 import octi.mapframework.maptype.actions.MapClick;
 import octi.mapframework.maptype.actions.MapHover;
 import octi.mapframework.model.Point;
-import octi.mapframework.model.Province;
 import octi.mapframework.model.ProvinceMap;
-import octi.mapframework.label.ProvinceBitmap;
+import octi.mapframework.label.MapLabel;
 import org.dom4j.Document;
+
+import java.util.Objects;
 
 
 public class WorldMapActor extends Actor implements InputProcessor {
@@ -26,7 +29,7 @@ public class WorldMapActor extends Actor implements InputProcessor {
     private Rectangle collisionRectangle;
     private ProvinceMap provinceMap;
     private boolean mouseHoverActivated = true;
-    private ProvinceBitmap labelProcessor;
+    private MapLabel labelProcessor;
     private MapCreator mapManager;
     private MapClick mapClick;
     private MapHover mapHover;
@@ -42,14 +45,21 @@ public class WorldMapActor extends Actor implements InputProcessor {
         setX(0);
         setY(0);
         collisionRectangle = new Rectangle(0, 0, getWidth(), getHeight());
-        labelProcessor = new ProvinceBitmap();
     }
+
+    public WorldMapActor(FileHandle fh, Document doc, MapType mapType, ILabel labelType){
+        this(fh, doc, mapType);
+        this.labelProcessor = new MapLabel(labelType);
+    }
+
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
         batch.draw(mapTexture, 0, 0);
 
-        labelProcessor.drawProvinceNames(batch, provinceMap.getDatamodel());
+        if(Objects.nonNull(labelProcessor)) {
+            labelProcessor.drawProvinceLabel(batch, provinceMap.getDatamodel());
+        }
     }
 
     @Override

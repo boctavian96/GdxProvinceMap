@@ -9,15 +9,24 @@ import octi.mapframework.xml.XmlLoader;
 import org.dom4j.Document;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+import java.net.URISyntaxException;
+import java.net.URL;
+
 public class MapCreatorTest {
 
-    private static final Document datamodel = XmlLoader.prepareDatamodel("/test/testMap1/mapDatamodel.xml");
-    private static final FileHandle mapId = new FileHandle("resources/test/testMap1/mapId.png");
 
     @Test
-    void testMapCreate(){
+    void testMapCreate() throws URISyntaxException {
+        URL datamodelURL = MapCreatorTest.class.getResource("/test/testMap1/mapDatamodel.xml");
+        URL mapId = MapCreatorTest.class.getResource("/test/testMap1/mapId.png");
+
+        Document datamodel = XmlLoader.prepareDatamodel(datamodelURL);
+        FileHandle fh = new FileHandle(new File(mapId.toURI()));
+
+
         //Given
-        MapCreator mapCreator = new MapCreator(mapId, datamodel);
+        MapCreator mapCreator = new MapCreator(fh, datamodel);
 
         //When
         Texture createdMap = mapCreator.generateMap(new PoliticalMap());

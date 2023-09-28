@@ -18,12 +18,12 @@ public class MapCreator {
     private final ProvinceMap provinceMap;
 
     public MapCreator(FileHandle fh){
-        this.pixmap = new ProvincePixmap(fh);
+        pixmap = new ProvincePixmap(fh);
         provinceMap = pixmap.getProvinceMap();
     }
 
     public MapCreator(FileHandle fh, Document datamodel){
-        this.pixmap = new ProvincePixmap(fh, datamodel);
+        pixmap = new ProvincePixmap(fh, datamodel);
         provinceMap = pixmap.getProvinceMap();
     }
 

@@ -32,6 +32,10 @@ public class MapLabel extends BitmapFont {
     public void drawProvinceLabel(Batch batch, Document doc) {
         List<LabelModel> model = labelStrategy.drawProvinceLabel(batch, doc);
 
+        if(model == null){
+            return;
+        }
+
         for(LabelModel m : model){
             super.draw(batch, m.getLabelName(), m.getLabelPosition().getX(), m.getLabelPosition().getY());
         }

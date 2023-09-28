@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -17,7 +16,6 @@ import octi.mapframework.MapCreator;
 import octi.mapframework.label.impl.ProvinceNameLabel;
 import octi.mapframework.label.impl.ResourceCountLabel;
 import octi.mapframework.label.impl.TerrainTypeLabel;
-import octi.mapframework.maptype.MapType;
 import octi.mapframework.maptype.PoliticalMap;
 import octi.mapframework.maptype.ResourceMap;
 import octi.mapframework.maptype.TerrainMap;
@@ -28,7 +26,6 @@ public class StageScreen extends AbstractScreen {
 
     private Stage stage;
     private Stage hud;
-    private MapCreator mc;
 
     private WorldMapActor wmaPolitical;
     private WorldMapActor wmaResource;
@@ -49,10 +46,8 @@ public class StageScreen extends AbstractScreen {
         hud = prepareHud();
         multiplexer.addProcessor(hud);
 
-        FileHandle fh = new FileHandle("assets/map/testMap1/mapId.png");
-        Document datamodel = XmlLoader.prepareDatamodel("assets/map/testMap1/mapDatamodel.xml");
-
-        mc = new MapCreator(fh, datamodel);
+        FileHandle fh = new FileHandle("assets/map/testMap2/mapId.png");
+        Document datamodel = XmlLoader.prepareDatamodel("assets/map/testMap2/mapDatamodel.xml");
 
         wmaPolitical = new WorldMapActor(fh, datamodel, new PoliticalMap(), new ProvinceNameLabel());
         wmaResource = new WorldMapActor(fh, datamodel, new ResourceMap(), new ResourceCountLabel());

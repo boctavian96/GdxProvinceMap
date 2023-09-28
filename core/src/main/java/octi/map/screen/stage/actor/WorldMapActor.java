@@ -12,7 +12,6 @@ import com.badlogic.gdx.scenes.scene2d.*;
 import octi.map.screen.AbstractScreen;
 import octi.mapframework.MapCreator;
 import octi.mapframework.label.ILabel;
-import octi.mapframework.label.impl.ProvinceNameLabel;
 import octi.mapframework.maptype.MapType;
 import octi.mapframework.maptype.actions.MapClick;
 import octi.mapframework.maptype.actions.MapHover;
@@ -21,7 +20,7 @@ import octi.mapframework.model.ProvinceMap;
 import octi.mapframework.label.MapLabel;
 import org.dom4j.Document;
 
-import java.util.Objects;
+import static java.util.Objects.nonNull;
 
 
 public class WorldMapActor extends Actor implements InputProcessor {
@@ -57,7 +56,7 @@ public class WorldMapActor extends Actor implements InputProcessor {
     public void draw(Batch batch, float parentAlpha) {
         batch.draw(mapTexture, 0, 0);
 
-        if(Objects.nonNull(labelProcessor)) {
+        if(nonNull(labelProcessor)) {
             labelProcessor.drawProvinceLabel(batch, provinceMap.getDatamodel());
         }
     }

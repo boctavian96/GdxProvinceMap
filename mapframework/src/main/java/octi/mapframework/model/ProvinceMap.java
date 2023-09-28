@@ -12,12 +12,11 @@ import java.util.List;
 
 @AllArgsConstructor
 @EqualsAndHashCode
+@Getter
+@Setter
 public class ProvinceMap {
-    @Getter @Setter
     private List<Province> provinces;
-    @Getter @Setter
     private Document datamodel;
-    @Getter @Setter
     private Color clickedProvinceId;
 
     public ProvinceMap(List<Province> provinceList){

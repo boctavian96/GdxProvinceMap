@@ -64,6 +64,10 @@ The model file has the following roles:
     </province>
 </map>
 ```
+### Result for the above input
+
+![alt text](presentation/mapResult.png)
+
 
 ## Demo
 TODO: Make a demo with GWT.  

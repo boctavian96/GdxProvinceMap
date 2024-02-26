@@ -7,20 +7,19 @@ import java.util.List;
 
 @AllArgsConstructor
 @EqualsAndHashCode
+@Getter
 public class Province {
     private static final Color emptyColor = Color.GRAY;
 
-    @Getter
     private int id;
-    @Getter
     private Color provinceColorId;
-    @Getter @Setter
+    @Setter
     private Color provinceColor;
-    @Getter @Setter
+    @Setter
     private List<Point> pointList;
-    @Getter @Setter
+    @Setter
     private Point center;
-    @Getter @Setter
+    @Setter
     private String name;
 
     public Province(int id, Color provinceColorId, List<Point> pointList){

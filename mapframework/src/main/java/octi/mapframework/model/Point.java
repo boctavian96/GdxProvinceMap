@@ -6,10 +6,9 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @EqualsAndHashCode
+@Getter
 public class Point {
-    @Getter
     private final int x;
-    @Getter
     private final int y;
 
     public Point(float x, float y){

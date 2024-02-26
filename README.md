@@ -1,5 +1,4 @@
 # GdxProvinceMap
-Grand Strategy Province map using Libgdx
 
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/boctavian96/GdxProvinceMap)
 ![GitHub contributors](https://img.shields.io/github/contributors/boctavian96/GdxProvinceMap)
@@ -8,10 +7,18 @@ Grand Strategy Province map using Libgdx
 ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/boctavian96/GdxProvinceMap?label=version)
 [![](https://jitpack.io/v/boctavian96/GdxProvinceMap.svg)](https://jitpack.io/#boctavian96/GdxProvinceMap)
 
+## Introduction
+A simple library for drawing and managing province maps.
+
+Here's a sneak peak.
+
+## Examples
+
+## Demo
 
 ## Use GdxProvinceMap in your project
 
 ```
 maven { url "https://jitpack.io" }
-implementation 'com.github.boctavian96:GdxProvinceMap:0.5.50'
+implementation 'com.github.boctavian96:GdxProvinceMap:0.6.57'
 ```

@@ -46,12 +46,12 @@ public class StageScreen extends AbstractScreen {
         hud = prepareHud();
         multiplexer.addProcessor(hud);
 
-        FileHandle fh = new FileHandle("assets/map/testMap2/mapId.png");
+        FileHandle fileHandle = new FileHandle("assets/map/testMap2/mapId.png");
         Document datamodel = XmlLoader.prepareDatamodel("assets/map/testMap2/mapDatamodel.xml");
 
-        wmaPolitical = new WorldMapActor(fh, datamodel, new PoliticalMap(), new ProvinceNameLabel());
-        wmaResource = new WorldMapActor(fh, datamodel, new ResourceMap(), new ResourceCountLabel());
-        wmaTerrain = new WorldMapActor(fh, datamodel, new TerrainMap(), new TerrainTypeLabel());
+        wmaPolitical = new WorldMapActor(fileHandle, datamodel, new PoliticalMap(), new ProvinceNameLabel());
+        wmaResource = new WorldMapActor(fileHandle, datamodel, new ResourceMap(), new ResourceCountLabel());
+        wmaTerrain = new WorldMapActor(fileHandle, datamodel, new TerrainMap(), new TerrainTypeLabel());
 
         wmaResource.setVisible(false);
         wmaTerrain.setVisible(false);

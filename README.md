@@ -16,14 +16,36 @@ Here's a sneak peak.
 ![alt text](presentation/basic_resource_map.png "Basic Resource Map")
 ![alt text](presentation/basic_terrain_map.png "Basic Terrain Map")
 
+## How it works
 
 ## Examples
 
 ## Demo
+TODO: Make a demo with GWT. Note might have some performance issues on web.
 
 ## Use GdxProvinceMap in your project
 
+### Add the dependency
 ```
 maven { url "https://jitpack.io" }
 implementation 'com.github.boctavian96:GdxProvinceMap:0.6.57'
+```
+
+### Check out the examples
+TODO
+
+### How to
+
+#### Create a basic map.
+TODO
+
+#### Create a basic model.
+```xml
+<todo>Document me!</todo>
+```
+
+#### Run the class responsible with drawing.
+
+```java
+//TODO: Show an example of running the library features.
 ```

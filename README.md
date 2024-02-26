@@ -8,9 +8,14 @@
 [![](https://jitpack.io/v/boctavian96/GdxProvinceMap.svg)](https://jitpack.io/#boctavian96/GdxProvinceMap)
 
 ## Introduction
-A simple library for drawing and managing province maps.
+A simple library for drawing and managing province maps. The library can be integrating on Libgdx.
 
 Here's a sneak peak.
+
+![alt text](presentation/basic_political_map.png "Basic Political Map")
+![alt text](presentation/basic_resource_map.png "Basic Resource Map")
+![alt text](presentation/basic_terrain_map.png "Basic Terrain Map")
+
 
 ## Examples
 
